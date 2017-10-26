@@ -26,7 +26,7 @@ class OAuthButton extends React.Component {
     // console.log(data);
     // send the code to the API
     Axios.post(this.provider.url, data)
-      .then(res => Auth.setToken(res.data.token))
+      .then(res => Auth.setToken(res.data.token, res.data.refreshToken))
       .then(() => localStorage.removeItem('provider'))
       .then(() =>
         this.props.history.replace(this.props.location.pathname))
