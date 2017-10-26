@@ -1,11 +1,11 @@
 const router = require('express').Router();
-// const foods  = require('../controllers/foods');
+const plans  = require('../controllers/plan');
 // const auth  = require('../controllers/auth');
 const oauth  = require('../controllers/oauth');
 // const secureRoute = require('../lib/secureRoute');
 
-// router.route('/foods')
-//   .get(foods.index)
+router.route('/plans')
+  .get(plans.index);
 //   .post(secureRoute, foods.create);
 //
 // router.route('/foods/:id')

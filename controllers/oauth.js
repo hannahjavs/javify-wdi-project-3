@@ -9,6 +9,7 @@ function spotify(req, res, next) {
   return rp({
     method: 'POST',
     url: 'https://accounts.spotify.com/api/token',
+    // Form because you are POSTing
     form: {
       redirect_uri: 'http://localhost:8000/',
       grant_type: 'authorization_code',
@@ -23,7 +24,7 @@ function spotify(req, res, next) {
   })
     .then(token => {
       console.log(token);
-      refreshToken = token.refresh_token;
+      refreshToken = token.refresh_token; // adding refesh token onto the token
       return rp({
         method: 'GET',
         url: 'https://api.spotify.com/v1/me',
@@ -46,6 +47,7 @@ function spotify(req, res, next) {
           }
 
           user.spotifyId = profile.id;
+          user.followers = profile.followers.total;
           if(profile.images.length) user.image = profile.images[0].url;
           return user.save();
         });
