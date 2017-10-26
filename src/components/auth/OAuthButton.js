@@ -11,8 +11,8 @@ class OAuthButton extends React.Component {
     if(!this.props.location.search.match(/code/) || localStorage.getItem('provider') !== this.props.provider) return false;
 
     const data = queryString.parse(this.props.location.search);
-    data.redirectUri = window.location.origin + window.location.pathname;
-    // console.log(data);
+    data.redirectUri = 'http://localhost:8000/';
+    console.log(data);
 
     Axios.post(this.provider.url, data)
       .then(res => Auth.setToken(res.data.token, res.data.refreshToken))
@@ -27,16 +27,27 @@ class OAuthButton extends React.Component {
   }
 
   render() {
+    console.log(window.location.origin + '/');
     // console.log(this.props.provider, provider);
-    return (
-      <a className="btn btn-primary"
-        href={this.provider.authLink}
-        onClick={this.setProvider}
-      >
-        {/* if the user clicks on the github button we will store that they have in local storage and vice versa for facebook */}
-        {this.props.children}
-      </a>
-    );
+    if (Auth.isAuthenticated()) {
+      return (
+        <button onClick={() => {
+          Auth.logout();
+          this.props.history.push('/');
+        }}>
+          Logout
+        </button>
+      );
+    } else {
+      return (
+        <a className="btn btn-primary"
+          href={this.provider.authLink}
+          onClick={this.setProvider}
+        >
+          Login with Spotify
+        </a>
+      );
+    }
   }
 }
 

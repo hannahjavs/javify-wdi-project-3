@@ -18,8 +18,6 @@ class PlansIndex extends React.Component {
 
   render() {
     return (
-
-
       <div>
         <div className="row">
           <div className="page-banner col-md-12">
