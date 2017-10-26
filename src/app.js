@@ -1,11 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter as Router } from 'react-router-dom';
+
+import OAuthButton from './components/auth/OAuthButton';
 
 class App extends React.Component {
 
   render() {
     return (
-      <h1>WDI Project 4: MERN Stack App</h1>
+      <Router>
+
+        <OAuthButton provider="spotify">Login with Spotify</OAuthButton>
+      </Router>
     );
   }
 }
