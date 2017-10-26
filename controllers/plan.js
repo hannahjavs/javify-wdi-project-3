@@ -18,18 +18,18 @@ function indexRoute(req, res, next) {
 //     .catch(next);
 // }
 //
-// function showRoute(req, res, next) {
-//   Plan
-//     .findById(req.params.id)
-//     .populate('items.place createdBy')
-//     .exec()
-//     .then((plan) => {
-//       if(!plan) return res.notFound();
-//
-//       return res.json(plan);
-//     })
-//     .catch(next);
-// }
+function showRoute(req, res, next) {
+  Plan
+    .findById(req.params.id)
+    .populate('items.place createdBy')
+    .exec()
+    .then((plan) => {
+      if(!plan) return res.notFound();
+
+      return res.json(plan);
+    })
+    .catch(next);
+}
 //
 // function deleteRoute(req, res, next) {
 //   Plan
@@ -94,9 +94,9 @@ function indexRoute(req, res, next) {
 // add deleteGuestRoute
 
 module.exports = {
-  index: indexRoute
+  index: indexRoute,
   // create: createRoute,
-  // show: showRoute,
+  show: showRoute
   // delete: deleteRoute,
   // update: updateRoute
 };

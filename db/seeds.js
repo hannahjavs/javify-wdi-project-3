@@ -8,7 +8,7 @@ const planData = [{
   title: 'Hackney Halloween Run',
   location: 'Hackney Canal',
   timeOfDay: 'Morning',
-  image: 'turn into image upload',
+  image: 'http://www.georgejamesphotography.com/img/s/v-3/p996087014-3.jpg',
   date: 26/10/17,
   playlist: 'import playlist from spotify'
 }];

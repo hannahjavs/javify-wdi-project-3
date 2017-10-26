@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import OAuthButton from './components/auth/OAuthButton';
-import PlansIndex from './components/plans/PlansIndex';
 
+import PlansIndex from './components/plans/PlansIndex';
+import PlansShow from './components/plans/PlansShow';
 // import PlansNew from './components/plans/PlansNew';
-// import PlansShow from './components/plans/PlansShow';
 // import PlansEdit from './components/plans/PlansEdit';
 
 // import 'bootstrap-css-only';
@@ -17,16 +17,16 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-
         <header>
           <OAuthButton provider="spotify" />
 
           <div className="container">
             <Switch>
               <Route exact path="/plans" component={PlansIndex} />
-              {/* <Route path="/plans/new" component={PlansNew} />
-              <Route path="/plans/:id/edit" component={PlansEdit} />
-              <Route path="/plans/:id" component={PlansShow} /> */}
+              <Route path="/plans/:id" component={PlansShow} />
+
+              {/* <Route path="/plans/new" component={PlansNew} /> */}
+              {/* <Route path="/plans/:id/edit" component={PlansEdit} /> */}
             </Switch>
           </div>
         </header>
