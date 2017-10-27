@@ -59,11 +59,7 @@ function PlansForm({ handleSubmit, handleChange, plan, playlists, getPlaylist })
           onChange={handleChange}
         />
 
-
-
         {/* <div className={errors.image ? 'form-group has-error' : 'form-group'}> */}
-
-
 
         {/* DATE OF PLAN POSTED */}
         <label htmlFor="title">Date</label>

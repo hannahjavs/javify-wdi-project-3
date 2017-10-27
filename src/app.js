@@ -5,6 +5,7 @@ import 'bootstrap-css-only';
 // import 'font-awesome/css/font-awesome.css';
 import './scss/style.scss';
 
+import GoogleMap from './components/google/GoogleMap';
 import OAuthButton from './components/auth/OAuthButton';
 import PlansIndex from './components/plans/PlansIndex';
 import PlansNew from './components/plans/PlansNew';
@@ -25,6 +26,9 @@ class App extends React.Component {
               <Route path="/plans/:id/edit" component={PlansEdit} />
               <Route path="/plans/:id" component={PlansShow} />
             </Switch>
+
+            <GoogleMap center={{ lat: 51.515, lng: -0.072 }} />
+
           </div>
         </header>
       </BrowserRouter>
