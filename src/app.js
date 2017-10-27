@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-// import 'bootstrap-css-only';
+import 'bootstrap-css-only';
 // import 'font-awesome/css/font-awesome.css';
-// import './scss/style.scss';
+import './scss/style.scss';
 
 import OAuthButton from './components/auth/OAuthButton';
 import PlansIndex from './components/plans/PlansIndex';

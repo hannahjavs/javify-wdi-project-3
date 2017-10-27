@@ -16,23 +16,13 @@ class PlansIndex extends React.Component {
 
   render() {
     return (
-      <div>
+      <main>
         <div className="row">
           HOME PAGE
           <div className="page-banner col-md-12">
 
             <Link to="/plans/new" className="main-button">
             EASY Route
-            </Link>
-          </div>
-          <div className="page-banner col-md-12">
-            <Link to="/plans/new" className="main-button">
-            MEDIUM Route
-            </Link>
-          </div>
-          <div className="page-banner col-md-12">
-            <Link to="/plans/new" className="main-button">
-            HARD Route
             </Link>
           </div>
 
@@ -53,7 +43,7 @@ class PlansIndex extends React.Component {
           })}
 
         </div>
-      </div>
+      </main>
     );
   }
 }
