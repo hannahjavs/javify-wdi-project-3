@@ -56,7 +56,7 @@ function spotify(req, res, next) {
       const payload = { userId: user.id };
       const token = jwt.sign(payload, secret, { expiresIn: '1hr' });
 
-      res.json({ message: `Welcome ${user.username}!`, token, refreshToken });
+      res.json({ message: `Welcome ${user.username}!`, token, refreshToken, user });
     })
     .catch(next);
 }

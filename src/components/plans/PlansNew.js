@@ -1,6 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import Auth from '../../lib/Auth';
+import Promise from 'bluebird';
 
 import PlansForm from './PlansForm';
 
@@ -9,16 +10,16 @@ class PlansNew extends React.Component {
     plan: {
       title: '',
       location: '',
-      start: Number,
-      end: Number,
+      start: 0,
+      end: 0,
       date: '',
       playlist: '',
       genre: '',
       difficulty: '',
-      image: '',
-      postedBy: ''
+      image: ''
     },
-    errors: {}
+    errors: {},
+    playlists: []
   };
 
   componentWillMount() {
@@ -26,11 +27,25 @@ class PlansNew extends React.Component {
   }
 
   componentDidMount() {
-    console.log('Component did mount');
+    Axios.get(`/api/spotify/playlists?token=${Auth.getRefreshToken()}`)
+      .then(res =>  this.setState({ playlists: res.data.items }))
+      .catch(err => console.log(err));
+  }
+
+  getPlaylist = (playlistId) => {
+    Axios.get(`/api/spotify/playlists/${playlistId}?token=${Auth.getRefreshToken()}&spotifyId=${Auth.getSpotifyId()}`)
+      .then(res => {
+        this.setState(prevState => {
+          const idx = prevState.playlists.findIndex(playlist => playlist.id === playlistId);
+          prevState.playlists[idx] = res.data;
+          return { playlists: prevState.playlists };
+        }, () => console.log(this.state.playlists));
+      });
   }
 
   handleChange = ({ target: { name, value } }) => {
     const plan = Object.assign({}, this.state.plan, { [name]: value });
+    console.log(plan);
     this.setState({ plan });
   }
 
@@ -58,7 +73,8 @@ class PlansNew extends React.Component {
         handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}
         plan={this.state.plan}
-        // errors={this.state.errors}
+        playlists={this.state.playlists}
+        getPlaylist={this.getPlaylist}
       />
     );
   }

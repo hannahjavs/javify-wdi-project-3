@@ -29,7 +29,23 @@ function showRoute(req, res, next) {
     })
     .catch(next);
 }
-//
+
+function updateRoute(req, res, next) {
+  if(req.file) req.body.image = req.file.filename;
+
+  Plan
+    .findById(req.params.id)
+    .exec()
+    .then((plan) => {
+      if(!plan) return res.notFound();
+
+      plan = Object.assign(plan, req.body);
+      return plan.save();
+    })
+    .then((plan) => res.json(plan))
+    .catch(next);
+}
+
 // function deleteRoute(req, res, next) {
 //   Plan
 //     .findById(req.params.id)
@@ -42,27 +58,11 @@ function showRoute(req, res, next) {
 //     .then(() => res.status(204).end())
 //     .catch(next);
 // }
-//
-// function updateRoute(req, res, next) {
-//   if(req.file) req.body.image = req.file.filename;
-//
-//   Plan
-//     .findById(req.params.id)
-//     .exec()
-//     .then((plan) => {
-//       if(!plan) return res.notFound();
-//
-//       plan = Object.assign(plan, req.body);
-//       return plan.save();
-//     })
-//     .then((plan) => res.json(plan))
-//     .catch(next);
-// }
 
 module.exports = {
   index: indexRoute,
   create: createRoute,
-  show: showRoute
+  show: showRoute,
+  update: updateRoute
   // delete: deleteRoute,
-  // update: updateRoute
 };

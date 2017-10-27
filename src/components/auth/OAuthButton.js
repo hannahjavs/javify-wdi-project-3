@@ -15,11 +15,14 @@ class OAuthButton extends React.Component {
     console.log(data);
 
     Axios.post(this.provider.url, data)
-      .then(res => Auth.setToken(res.data.token, res.data.refreshToken))
+      .then(res => {
+        console.log(res);
+        Auth.setToken(res.data.token, res.data.refreshToken, res.data.user.spotifyId);
+      })
       .then(() => localStorage.removeItem('provider'))
       .then(() =>
         this.props.history.replace(this.props.location.pathname))
-      .then(() => this.props.history.push('/plans'));
+      .then(() => this.props.history.push('/'));
   }
 
   setProvider = () => {

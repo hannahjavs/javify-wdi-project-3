@@ -11,8 +11,8 @@ const planSchema = mongoose.Schema({
   playlist: { type: String },
   genre: { type: String },
   difficulty: { type: String, required: 'Image is required' },
-  image: { type: String, required: 'Image is required' }
-  // postedBy: { type: mongoose.Schema.ObjectId, ref: 'User'}
+  image: { type: String, required: 'Image is required' },
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User'}
 });
 
 module.exports = mongoose.model('plan', planSchema);

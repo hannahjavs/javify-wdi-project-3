@@ -1,11 +1,20 @@
 class Auth {
-  static setToken(token, refreshToken) {
+  static setToken(token, refreshToken, spotifyId) {
     localStorage.setItem('refreshToken', refreshToken);
+    localStorage.setItem('spotifyId', spotifyId);
     return localStorage.setItem('token', token);
   }
 
   static getToken() {
     return localStorage.getItem('token');
+  }
+
+  static getSpotifyId() {
+    return localStorage.getItem('spotifyId');
+  }
+
+  static getRefreshToken() {
+    return localStorage.getItem('refreshToken');
   }
 
   static isAuthenticated() {
@@ -15,6 +24,7 @@ class Auth {
   static logout() {
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('token');
+    localStorage.removeItem('spotifyId');
   }
 
   static getPayload() {

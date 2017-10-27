@@ -1,7 +1,7 @@
 import React from 'react';
 // import BackButton from '../utility/BackButton';
 
-function PiesForm({ handleSubmit, handleChange, plan }) {
+function PlansForm({ handleSubmit, handleChange, plan, playlists, getPlaylist }) {
   return (
     <div className="row">
       <div className="page-banner col-md-12">
@@ -110,6 +110,23 @@ function PiesForm({ handleSubmit, handleChange, plan }) {
           <option>HARD</option>
         </select>
 
+        <label htmlFor="playlist">Playlist</label>
+        {playlists && playlists.map(playlist => (
+          <div className="radio" key={playlist.id}>
+            <label>
+              <input type="radio"
+                className="form-control"
+                id="playlist"
+                name="playlist"
+                value={playlist.id}
+                onChange={handleChange} />
+              {playlist.name}
+            </label>
+            {!playlist.tracks.items && <button type="button" onClick={() => getPlaylist(playlist.id)}>Preview Tracks</button>}
+            {playlist.tracks.items && playlist.tracks.items.length}
+            {playlist.tracks.items && playlist.tracks.items.map(item => <audio controls key={item.track.id} src={item.track.preview_url}></audio>)}
+          </div>
+        ))}
 
         {/* {errors.category && <small className="has-error">{errors.category}</small>} */}
         {/* </div> */}
@@ -127,4 +144,4 @@ function PiesForm({ handleSubmit, handleChange, plan }) {
   );
 }
 
-export default PiesForm;
+export default PlansForm;
