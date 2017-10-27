@@ -115,6 +115,7 @@ function PlansForm({ handleSubmit, handleChange, plan, playlists, getPlaylist })
                 id="playlist"
                 name="playlist"
                 value={playlist.id}
+                checked={playlist.id === plan.playlist}
                 onChange={handleChange} />
               {playlist.name}
             </label>

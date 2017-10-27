@@ -15,6 +15,7 @@ class PlansIndex extends React.Component {
   }
 
   render() {
+    console.log(this.state.plans);
     return (
       <main>
         <div className="row">
@@ -38,6 +39,7 @@ class PlansIndex extends React.Component {
                 <h3>Title: {plan.title}</h3>
                 <p>Location: {plan.location}</p>
                 <p>Difficulty: {plan.difficulty}</p>
+                <p>Posted By: {plan.createdBy.username}</p>
               </div>
             );
           })}

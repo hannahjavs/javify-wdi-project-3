@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Axios from 'axios';
 // import Auth from '../../lib/Auth';
 // import BackButton from '../utility/BackButton';
-// import GoogleMap from '../components/google/GoogleMap';
+import GoogleMap from '../google/GoogleMap';
 
 
 class PlansShow extends React.Component {
@@ -36,7 +36,7 @@ class PlansShow extends React.Component {
           <h4>Location: {this.state.plan.location}</h4>
           <p>Difficulty: {this.state.plan.difficulty}</p>
 
-          {/* <GoogleMap center={{ lat: 51.515, lng: -0.072 }} /> */}
+          <GoogleMap center={{ lat: 51.515, lng: -0.072 }} />
 
           {/* EDIT BUTTON */}
           <Link to={`/plans/${this.state.plan.id}/edit`} className="standard-button">

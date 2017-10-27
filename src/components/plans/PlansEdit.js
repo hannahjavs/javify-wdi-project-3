@@ -9,15 +9,16 @@ class PlansEdit extends React.Component {
     plan: {
       title: '',
       location: '',
-      start: Number,
-      end: Number,
+      start: 0,
+      end: 0,
       date: '',
       playlist: '',
       genre: '',
       difficulty: '',
       image: ''
     },
-    errors: {}
+    errors: {},
+    playlists: []
   };
 
   componentDidMount() {
@@ -25,6 +26,21 @@ class PlansEdit extends React.Component {
       .get(`/api/plans/${this.props.match.params.id}`)
       .then(res => this.setState({ plan: res.data }))
       .catch(err => console.log(err));
+
+    Axios.get(`/api/spotify/playlists?token=${Auth.getRefreshToken()}`)
+      .then(res =>  this.setState({ playlists: res.data.items }))
+      .catch(err => console.log(err));
+  }
+
+  getPlaylist = (playlistId) => {
+    Axios.get(`/api/spotify/playlists/${playlistId}?token=${Auth.getRefreshToken()}&spotifyId=${Auth.getSpotifyId()}`)
+      .then(res => {
+        this.setState(prevState => {
+          const idx = prevState.playlists.findIndex(playlist => playlist.id === playlistId);
+          prevState.playlists[idx] = res.data;
+          return { playlists: prevState.playlists };
+        }, () => console.log(this.state.playlists));
+      });
   }
 
   handleChange = ({ target: { name, value } }) => {
@@ -42,6 +58,7 @@ class PlansEdit extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <PlansForm
         history={this.props.history}
@@ -49,6 +66,8 @@ class PlansEdit extends React.Component {
         handleChange={this.handleChange}
         plan={this.state.plan}
         errors={this.state.errors}
+        playlists={this.state.playlists}
+        getPlaylist={this.getPlaylist}
       />
     );
   }

@@ -3,6 +3,7 @@ const Plan = require('../models/plan');
 function indexRoute(req, res, next) {
   Plan
     .find()
+    .populate('createdBy')
     .exec()
     .then((plans) => res.json(plans))
     .catch(next);

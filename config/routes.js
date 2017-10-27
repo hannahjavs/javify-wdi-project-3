@@ -2,10 +2,11 @@ const router = require('express').Router();
 const plans  = require('../controllers/plan');
 const oauth  = require('../controllers/oauth');
 const spotify  = require('../controllers/spotify');
+const secureRoute = require('../lib/secureRoute');
 
 router.route('/plans')
   .get(plans.index)
-  .post(plans.create);
+  .post(secureRoute, plans.create);
 
 router.route('/plans/:id')
   .get(plans.show)
