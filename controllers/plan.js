@@ -8,16 +8,15 @@ function indexRoute(req, res, next) {
     .catch(next);
 }
 
+function createRoute(req, res, next) {
+  req.body.createdBy = req.currentUser;
+  console.log('req body', req.body);
+  Plan
+    .create(req.body)
+    .then((plan) => res.status(201).json(plan))
+    .catch(next);
+}
 
-// function createRoute(req, res, next) {
-//   req.body.createdBy = req.currentUser;
-//   console.log('req body', req.body);
-//   Plan
-//     .create(req.body)
-//     .then((plan) => res.status(201).json(plan))
-//     .catch(next);
-// }
-//
 function showRoute(req, res, next) {
   Plan
     .findById(req.params.id)
@@ -59,43 +58,10 @@ function showRoute(req, res, next) {
 //     .then((plan) => res.json(plan))
 //     .catch(next);
 // }
-//
-// function addGuestRoute(req, res, next) {
-//   Plan
-//     .findById(req.params.id)
-//     .exec()
-//     .then((plan) => {
-//       if(!plan) return res.notFound();
-//
-//       const guest = plan.guests.create(req.body);
-//       plan.guests.push(guest);
-//       return plan.save();
-//     })
-//     .then((plan) => res.json(plan))
-//     .catch(next);
-// }
-//
-// function deleteGuestRoute(req, res, next) {
-//   Plan
-//     .findById(req.params.id)
-//     .exec()
-//     .then((plan) => {
-//       if(!plan) return res.notFound();
-//
-//       const guest = plan.guests.id(req.params.guestId);
-//       guest.remove();
-//
-//       return plan.save();
-//     })
-//     .then(() => res.status(204).end())
-//     .catch(next);
-// }
-
-// add deleteGuestRoute
 
 module.exports = {
   index: indexRoute,
-  // create: createRoute,
+  create: createRoute,
   show: showRoute
   // delete: deleteRoute,
   // update: updateRoute

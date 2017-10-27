@@ -23,16 +23,16 @@ class PlansShow extends React.Component {
   render() {
     return (
       <div className="row">
-
+        <h1>SHOW PAGE</h1>
         <div className="image-tile col-md-6">
           <img src={this.state.plan.image} className="img-responsive" />
         </div>
 
         <div className="col-md-6">
-          <h1>SHOW PAGE</h1>
-          <h3>{this.state.plan.title}</h3>
-          <h4>{this.state.plan.location}</h4>
-          <p>{this.state.plan.timeOfDay}</p>
+
+          <h3>Title: {this.state.plan.title}</h3>
+          <h4>Location: {this.state.plan.location}</h4>
+          <p>Difficulty: {this.state.plan.difficulty}</p>
 
           {/* EDIT BUTTON */}
           <Link to={`/plans/${this.state.plan.id}/edit`} className="standard-button">

@@ -7,15 +7,19 @@ const Plan      = require('../models/plan');
 const planData = [{
   title: 'Hackney Halloween Run',
   location: 'Hackney Canal',
-  timeOfDay: 'Morning',
-  image: 'http://www.georgejamesphotography.com/img/s/v-3/p996087014-3.jpg',
-  date: 26/10/17,
-  playlist: 'import playlist from spotify'
+  start: Number,
+  end: Number,
+  date: '10/01/05',
+  playlist: 'get from spotify',
+  genre: 'Soft Rock',
+  difficulty: 'Medium',
+  image: 'http://www.georgejamesphotography.com/img/s/v-3/p996087014-3.jpg'
+  // postedBy: mongoose.Schema.ObjectId
 }];
 
 // const userData = [{
 //   // SPOTIFY DATA
-// }];
+// }];``
 
 mongoose.connect(dbURI, { useMongoClient: true })
   .then(db => db.dropDatabase())

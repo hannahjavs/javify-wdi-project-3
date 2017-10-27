@@ -20,8 +20,19 @@ class PlansIndex extends React.Component {
         <div className="row">
           HOME PAGE
           <div className="page-banner col-md-12">
+
             <Link to="/plans/new" className="main-button">
-            Create An Audio Plan
+            EASY Route
+            </Link>
+          </div>
+          <div className="page-banner col-md-12">
+            <Link to="/plans/new" className="main-button">
+            MEDIUM Route
+            </Link>
+          </div>
+          <div className="page-banner col-md-12">
+            <Link to="/plans/new" className="main-button">
+            HARD Route
             </Link>
           </div>
 
@@ -34,9 +45,9 @@ class PlansIndex extends React.Component {
                 <Link to={`/plans/${plan.id}`}>
                   <img src={plan.image} className="img-responsive" />
                 </Link>
-                <h3>{plan.title}</h3>
-                <p>{plan.tastingNotes}</p>
-                <p>{plan.category}</p>
+                <h3>Title: {plan.title}</h3>
+                <p>Location: {plan.location}</p>
+                <p>Difficulty: {plan.difficulty}</p>
               </div>
             );
           })}

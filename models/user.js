@@ -16,9 +16,6 @@ module.exports = mongoose.model('User', userSchema);
 
 
 
-
-
-
 // HANNAH SPOTIFY DATA
 // {
 //   "display_name" : "Hannah Javs",
