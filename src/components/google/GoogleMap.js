@@ -1,7 +1,6 @@
 /* global google */
-
 import React from 'react';
-// import mapStyles from '../config/mapStyles';
+import mapStyles from '../config/mapStyles';
 
 class GoogleMap extends React.Component {
 
@@ -9,8 +8,8 @@ class GoogleMap extends React.Component {
     console.log(this.mapCanvas);
     this.map = new google.maps.Map(this.mapCanvas, {
       center: this.props.center || { lat: 51.51, lng: -0.08 },
-      zoom: 14
-      // styles: mapStyles
+      zoom: 14,
+      styles: mapStyles
     });
 
     this.marker = new google.maps.Marker({
