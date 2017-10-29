@@ -6,7 +6,7 @@ import PlansIndex from '../plans/PlansIndex';
 import PlansShow from  '../plans/PlansShow';
 import PlansNew from '../plans/PlansNew';
 import PlansEdit from '../plans/PlansEdit';
-// import NoRoute from './NoRoute';
+import NoRoute from './NoRoute';
 
 const Routes = () => {
   return (
@@ -15,7 +15,7 @@ const Routes = () => {
       <ProtectedRoute exact path="/plans/new" component={PlansNew} />
       <ProtectedRoute exact path="/plans/:id/edit" component={PlansEdit} />
       <Route exact path="/plans/:id" component={PlansShow} />
-      {/* <Route component={NoRoute} /> */}
+      <Route component={NoRoute} />
     </Switch>
   );
 };
