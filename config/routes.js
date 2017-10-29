@@ -10,8 +10,8 @@ router.route('/plans')
 
 router.route('/plans/:id')
   .get(plans.show)
-  .put(plans.update);
-//   .delete(secureRoute, plans.delete);
+  .put(secureRoute, plans.update)
+  .delete(secureRoute, plans.delete);
 
 // LOG IN WITH SPOTIFY AUTHENTICATION
 router.route('/oauth/spotify')

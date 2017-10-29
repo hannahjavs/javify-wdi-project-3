@@ -1,6 +1,5 @@
 const rp = require('request-promise');
 
-
 // GET MULTIPLE PLAYLISTS FROM SPOTIFY
 function getPlaylists(req, res, next) {
   return rp({
@@ -30,7 +29,6 @@ function getPlaylists(req, res, next) {
     .then(response => res.json(response))
     .catch(next);
 }
-
 
 // GET A PLAYLIST FROM A USERS SPOTIFY USING THE PLAYLIST ID
 function getPlaylist(req, res, next) {

@@ -17,13 +17,11 @@ class PlansIndex extends React.Component {
   render() {
     console.log(this.state.plans);
     return (
-      <main>
+      <div>
         <div className="row">
-          HOME PAGE
           <div className="page-banner col-md-12">
 
-            <Link to="/plans/new" className="main-button">
-            EASY Route
+            <Link to="/plans/new" className="main-button"><i className="fa fa-plus" aria-hidden="true"></i>EASY Route
             </Link>
           </div>
 
@@ -43,9 +41,8 @@ class PlansIndex extends React.Component {
               </div>
             );
           })}
-
         </div>
-      </main>
+      </div>
     );
   }
 }

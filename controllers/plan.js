@@ -18,17 +18,31 @@ function createRoute(req, res, next) {
     .catch(next);
 }
 
+// function showRoute(req, res, next) {
+//   Plan
+//     .findById(req.params.id)
+//     .populate('items.place createdBy')
+//     .exec()
+//     .then((plan) => {
+//       if(!plan) return res.notFound();
+//
+//       return res.json(plan);
+//     })
+//     .catch(next);
+// }
+
 function showRoute(req, res, next) {
   Plan
     .findById(req.params.id)
-    .populate('items.place createdBy')
     .exec()
     .then((plan) => {
       if(!plan) return res.notFound();
-
-      return res.json(plan);
+      res.json(plan);
     })
-    .catch(next);
+    .catch((err) => {
+      console.log('ERROR IN CATCH ===========>', err);
+      next(err);
+    });
 }
 
 function updateRoute(req, res, next) {
@@ -47,23 +61,23 @@ function updateRoute(req, res, next) {
     .catch(next);
 }
 
-// function deleteRoute(req, res, next) {
-//   Plan
-//     .findById(req.params.id)
-//     .exec()
-//     .then((plan) => {
-//       if(!plan) return res.notFound();
-//
-//       return plan.remove();
-//     })
-//     .then(() => res.status(204).end())
-//     .catch(next);
-// }
+function deleteRoute(req, res, next) {
+  Plan
+    .findById(req.params.id)
+    .exec()
+    .then((plan) => {
+      if(!plan) return res.notFound();
+
+      return plan.remove();
+    })
+    .then(() => res.status(204).end())
+    .catch(next);
+}
 
 module.exports = {
   index: indexRoute,
   create: createRoute,
   show: showRoute,
-  update: updateRoute
-  // delete: deleteRoute,
+  update: updateRoute,
+  delete: deleteRoute
 };
