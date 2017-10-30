@@ -3,8 +3,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 import Auth from '../../lib/Auth';
-// import BackButton from '../utility/BackButton';
 import GoogleMap from '../google/GoogleMap';
+import BackButton from '../utility/BackButton';
 
 
 class PlansShow extends React.Component {
@@ -42,6 +42,9 @@ class PlansShow extends React.Component {
     return (
       <div className="row">
         <h1>SHOW PAGE</h1>
+
+        <BackButton history={this.props.history} />
+
         <hr />
         <div className="col-md-6">
           <div className="image-tile col-md-6">
