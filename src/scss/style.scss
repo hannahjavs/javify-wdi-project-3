@@ -1,4 +1,13 @@
-.img-responsive {
+body, html {
+  height: 100%;
+  min-height: 100%;
+}
+
+body, input, button {
+  font-family: 'Karla', sans-serif;
+}
+
+.tile {
   background-position: center;
   background-size: cover;
   position: relative;
@@ -9,7 +18,7 @@
     display: block;
     padding-top: 100%;
   }
-  .img-inner {
+  .tile-inner {
     position: absolute;
     top: 0;
     left: 0;
@@ -23,26 +32,26 @@
     padding: 20px;
     opacity: 1;
     transition: opacity 0.3s ease;
-    // h3 {
-    //   font-size: 18px;
-    //   text-transform: uppercase;
-    //   color: black;
-    // }
+    h3 {
+      font-size: 18px;
+      text-transform: uppercase;
+      color: black;
+    }
   }
   &:hover {
-    .img-inner {
+    .tile-inner {
       opacity: 0;
     }
   }
 }
 
+img {
+  width: 100%;
+}
+
 // main {
 //   background-color: #fbefdd;
 // }
-
-h3 {
-  color: black;
-}
 
 p {
   color: black;

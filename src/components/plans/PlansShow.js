@@ -6,7 +6,6 @@ import Auth from '../../lib/Auth';
 import GoogleMap from '../google/GoogleMap';
 import BackButton from '../utility/BackButton';
 
-
 class PlansShow extends React.Component {
   state = {
     plan: {}
@@ -22,12 +21,6 @@ class PlansShow extends React.Component {
       });
   }
 
-  // deletePlan = () => {
-  //   Axios
-  //     .delete(`/api/plans/${this.props.match.params.id}`)
-  //     .then(() => this.props.history.push('/'))
-  //     .catch(err => console.log(err));
-  // }
 
   deletePlan = () => {
     Axios
@@ -40,38 +33,41 @@ class PlansShow extends React.Component {
 
   render() {
     return (
-      <div className="row">
-        <h1>SHOW PAGE</h1>
+      <main className="container">
+        <div className="row">
+          <div className="col-md-3">
 
-        <BackButton history={this.props.history} />
+            {/* BACK BUTTON */}
+            <BackButton history={this.props.history} />
 
-        <hr />
-        <div className="col-md-6">
-          <div className="image-tile col-md-6">
-            <img src={this.state.plan.image} className="img-responsive" />
+            {/* EDIT BUTTON */}
+            <Link to={`/plans/${this.state.plan.id}/edit`} className="standard-button">
+              <i className="fa fa-pencil" aria-hidden="true"></i><h3>Edit Plan</h3>
+            </Link>
+
+            {/* DELETE BUTTON */}
+            {Auth.isAuthenticated() && <button className="main-button" onClick={this.deletePlan}>
+              <i className="fa fa-trash" aria-hidden="true"></i>Delete
+            </button>}
+            
           </div>
 
-          <h3>Title: {this.state.plan.title}</h3>
-          <h4>Location: {this.state.plan.location}</h4>
-          <p>Difficulty: {this.state.plan.difficulty}</p>
+          <hr />
+
+          {/* ROUTE IMAGE */}
+          <div className="row">
+            <div className="image-tile col-md-6 col-md-6 col-md-3">
+              <img src={this.state.plan.image} className="img-responsive" />
+              <h3>Title: {this.state.plan.title}</h3>
+              <h3>Location: {this.state.plan.location}</h3>
+              <p>Difficulty: {this.state.plan.difficulty}</p>
+            </div>
+          </div>
 
           <GoogleMap center={{ lat: 51.515, lng: -0.072 }} />
 
-          {/* EDIT BUTTON */}
-          <Link to={`/plans/${this.state.plan.id}/edit`} className="standard-button">
-            <i className="fa fa-pencil" aria-hidden="true"></i><h3>Edit Plan</h3>
-          </Link>
-          {' '}
-
-          {Auth.isAuthenticated() && <button className="main-button" onClick={this.deletePlan}>
-            <i className="fa fa-trash" aria-hidden="true"></i>Delete
-          </button>}
-
-          {/* <button className="main-button" onClick={this.deletePlan}>
-            <i className="fa fa-trash" aria-hidden="true"></i>Delete
-          </button> */}
         </div>
-      </div>
+      </main>
     );
   }
 }

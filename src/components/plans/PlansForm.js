@@ -1,13 +1,14 @@
 import React from 'react';
-// import BackButton from '../utility/BackButton';
+import BackButton from '../utility/BackButton';
+import GoogleMap from '../google/GoogleMap';
 
-function PlansForm({ handleSubmit, handleChange, plan, playlists, getPlaylist, errors }) {
+function PlansForm({ handleSubmit, handleChange, plan, playlists, getPlaylist, errors, history }) {
   return (
     <div className="row">
       <div className="page-banner col-md-12">
-        {/* <BackButton history={history} /> */}
+        <BackButton history={history} />
+        <GoogleMap center={{ lat: 51.5074, lng: -0.1278 }} />
       </div>
-
       <form onSubmit={handleSubmit} className="col-md-6">
 
         {/* PLAN TITLE */}
@@ -39,7 +40,6 @@ function PlansForm({ handleSubmit, handleChange, plan, playlists, getPlaylist, e
           />
           {errors.location && <small className="has-error">{errors.location}</small>}
         </div>
-
 
         {/* LOCATION - USE GOOGLE AUTO COMPLETE */}
         <div className={errors.location ? 'form-group has-error' :
@@ -113,12 +113,12 @@ function PlansForm({ handleSubmit, handleChange, plan, playlists, getPlaylist, e
             value={plan.difficulty}
             onChange={handleChange}
           >
-            {errors.difficulty && <small className="has-error">{errors.difficulty}</small>}
             <option value="" disabled>Please Select</option>
             <option>EASY</option>
             <option>MEDIUM</option>
             <option>HARD</option>
           </select>
+          {errors.difficulty && <small className="has-error">{errors.difficulty}</small>}
         </div>
 
         {/* SELECT A PLAYLIST FROM SPOTIFY */}

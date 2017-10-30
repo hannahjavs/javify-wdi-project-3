@@ -1,7 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import Auth from '../../lib/Auth';
-import Promise from 'bluebird';
+// import Promise from 'bluebird';
 
 import PlansForm from './PlansForm';
 
@@ -51,13 +51,6 @@ class PlansNew extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-
-    //   Axios
-    //     .post('/api/plans', this.state.plan)
-    //     .then(() => this.props.history.push('/'))
-    //     .catch(err => this.setState({ errors: err.response.data.errors }));
-    // }
-
     Axios
       .post('/api/plans', this.state.plan, {
         headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
@@ -75,6 +68,7 @@ class PlansNew extends React.Component {
         plan={this.state.plan}
         playlists={this.state.playlists}
         getPlaylist={this.getPlaylist}
+        errors={this.state.errors}
       />
     );
   }
