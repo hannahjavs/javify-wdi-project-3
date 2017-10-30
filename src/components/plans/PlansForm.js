@@ -1,7 +1,7 @@
 import React from 'react';
 // import BackButton from '../utility/BackButton';
 
-function PlansForm({ handleSubmit, handleChange, plan, playlists, getPlaylist }) {
+function PlansForm({ handleSubmit, handleChange, plan, playlists, getPlaylist, errors }) {
   return (
     <div className="row">
       <div className="page-banner col-md-12">
@@ -10,102 +10,120 @@ function PlansForm({ handleSubmit, handleChange, plan, playlists, getPlaylist })
 
       <form onSubmit={handleSubmit} className="col-md-6">
 
-        {/* <div className={errors.title ? 'form-group has-error' :
-        'form-group'}> */}
-
         {/* PLAN TITLE */}
-        <label htmlFor="title">Title</label>
-        <input
-          type="text"
-          className="form-control"
-          id="title"
-          name="title"
-          value={plan.title}
-          onChange={handleChange}
-        />
-        {/* {errors.title && <small className="has-error">{errors.title}</small>} */}
-        {/* </div> */}
+        <div className={errors.title ? 'form-group has-error' :
+          'form-group'}>
+          <label htmlFor="title">Title</label>
+          <input
+            type="text"
+            className="form-control"
+            id="title"
+            name="title"
+            value={plan.title}
+            onChange={handleChange}
+          />
+          {errors.title && <small className="has-error">{errors.title}</small>}
+        </div>
+
+        {/* LOCATION - USE GOOGLE AUTO COMPLETE */}
+        <div className={errors.location ? 'form-group has-error' :
+          'form-group'}>
+          <label htmlFor="location">Location</label>
+          <input
+            type="text"
+            className="form-control"
+            id="location"
+            name="location"
+            value={plan.location}
+            onChange={handleChange}
+          />
+          {errors.location && <small className="has-error">{errors.location}</small>}
+        </div>
 
 
         {/* LOCATION - USE GOOGLE AUTO COMPLETE */}
-        <label htmlFor="location">Location</label>
-        <input
-          type="text"
-          className="form-control"
-          id="location"
-          name="location"
-          value={plan.location}
-          onChange={handleChange}
-        />
+        <div className={errors.location ? 'form-group has-error' :
+          'form-group'}>
+          <label htmlFor="location">Start of route</label>
+          <input
+            type="number"
+            className="form-control"
+            id="start"
+            name="start"
+            value={plan.start}
+            onChange={handleChange}
+          />
+          {errors.location && <small className="has-error">{errors.location}</small>}
+        </div>
 
+        {/* LOCATION - USE GOOGLE AUTO COMPLETE */}  
+        <div className={errors.location ? 'form-group has-error' :
+          'form-group'}>
+          <label htmlFor="location">End of route</label>
+          <input
+            type="number"
+            className="form-control"
+            id="end"
+            name="end"
+            value={plan.end}
+            onChange={handleChange}
+          />
+          {errors.location && <small className="has-error">{errors.location}</small>}
+        </div>
 
-        {/* LOCATION - USE GOOGLE AUTO COMPLETE */}
-        <label htmlFor="location">Start of route</label>
-        <input
-          type="number"
-          className="form-control"
-          id="start"
-          name="start"
-          value={plan.start}
-          onChange={handleChange}
-        />
-        <label htmlFor="location">End of route</label>
-        <input
-          type="number"
-          className="form-control"
-          id="end"
-          name="end"
-          value={plan.end}
-          onChange={handleChange}
-        />
-
-        {/* <div className={errors.image ? 'form-group has-error' : 'form-group'}> */}
 
         {/* DATE OF PLAN POSTED */}
-        <label htmlFor="title">Date</label>
-        <input
-          type="text"
-          className="form-control"
-          id="date"
-          name="date"
-          value={plan.date}
-          onChange={handleChange}
-        />
-
+        <div className={errors.date ? 'form-group has-error' :
+          'form-group'}>
+          <label htmlFor="date">Date</label>
+          <input
+            type="text"
+            className="form-control"
+            id="date"
+            name="date"
+            value={plan.date}
+            onChange={handleChange}
+          />
+          {errors.date && <small className="has-error">{errors.date}</small>}
+        </div>
 
 
         {/* PLAN IMAGE */}
-        <label htmlFor="image">Image</label>
-        <input
-          type="text"
-          className="form-control"
-          id="image"
-          name="image"
-          value={plan.image}
-          onChange={handleChange}
-        />
-        {/* {errors.image && <small className="has-error">{errors.image}</small>} */}
-        {/* </div> */}
-
-        {/* <div className={errors.category ? 'form-group has-error' : 'form-group'}> */}
-
+        <div className={errors.image ? 'form-group has-error' : 'form-group'}>
+          <label htmlFor="image">Image</label>
+          <input
+            type="text"
+            className="form-control"
+            id="image"
+            name="image"
+            value={plan.image}
+            onChange={handleChange}
+          />
+          {errors.image && <small className="has-error">{errors.image}</small>}
+        </div>
 
 
         {/* PLAN DIFFICULTY */}
-        <label htmlFor="difficulty">Difficulty</label>
-        <select
-          className="form-control"
-          id="difficulty"
-          name="difficulty"
-          value={plan.difficulty}
-          onChange={handleChange}
-        >
-          <option value="" disabled>Please Select</option>
-          <option>EASY</option>
-          <option>MEDIUM</option>
-          <option>HARD</option>
-        </select>
+        <div className={errors.difficulty ? 'form-group has-error' : 'form-group'}>
+          <label htmlFor="difficulty">Difficulty</label>
+          <select
+            className="form-control"
+            id="difficulty"
+            name="difficulty"
+            value={plan.difficulty}
+            onChange={handleChange}
+          >
+            {errors.difficulty && <small className="has-error">{errors.difficulty}</small>}
+            <option value="" disabled>Please Select</option>
+            <option>EASY</option>
+            <option>MEDIUM</option>
+            <option>HARD</option>
+          </select>
+        </div>
 
+        {/* SELECT A PLAYLIST FROM SPOTIFY */}
+        {/* <div className={errors.playlist ? 'form-group has-error' :
+          'form-group'}> */}
         <label htmlFor="playlist">Playlist</label>
         {playlists && playlists.map(playlist => (
           <div className="radio" key={playlist.id}>
@@ -117,6 +135,8 @@ function PlansForm({ handleSubmit, handleChange, plan, playlists, getPlaylist })
                 value={playlist.id}
                 checked={playlist.id === plan.playlist}
                 onChange={handleChange} />
+              {/* {errors.playlist && <small className="has-error">{errors.playlist}</small>} */}
+
               {playlist.name}
             </label>
             {!playlist.tracks.items && <button type="button" onClick={() => getPlaylist(playlist.id)}>Preview Tracks</button>}
@@ -124,10 +144,6 @@ function PlansForm({ handleSubmit, handleChange, plan, playlists, getPlaylist })
             {playlist.tracks.items && playlist.tracks.items.map(item => <audio controls key={item.track.id} src={item.track.preview_url}></audio>)}
           </div>
         ))}
-
-        {/* {errors.category && <small className="has-error">{errors.category}</small>} */}
-        {/* </div> */}
-
 
         {/* SAVE PLAN */}
         <div>
