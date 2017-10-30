@@ -22,16 +22,16 @@ class PlansShow extends React.Component {
       });
   }
 
-  // deletePie = () => {
+  // deletePlan = () => {
   //   Axios
-  //     .delete(`/api/pies/${this.props.match.params.id}`)
+  //     .delete(`/api/plans/${this.props.match.params.id}`)
   //     .then(() => this.props.history.push('/'))
   //     .catch(err => console.log(err));
   // }
 
-  deletePie = () => {
+  deletePlan = () => {
     Axios
-      .delete(`/api/pies/${this.props.match.params.id}`, {
+      .delete(`/api/plans/${this.props.match.params.id}`, {
         headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
       })
       .then(() => this.props.history.push('/'))
