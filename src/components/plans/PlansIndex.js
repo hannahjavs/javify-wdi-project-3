@@ -37,6 +37,7 @@ class PlansIndex extends React.Component {
               <p>Title: {plan.title}</p>
               <p>Location: {plan.location}</p>
               <p>Difficulty: {plan.difficulty}</p>
+              <p>Posted By: {plan.createdBy.username}</p>
             </div>
           );
         })}

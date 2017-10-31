@@ -14,7 +14,8 @@ class PlansEdit extends React.Component {
       genre: '',
       difficulty: '',
       image: '',
-      route: {}
+      route: {},
+      markers: {}
     },
     errors: {},
     playlists: []

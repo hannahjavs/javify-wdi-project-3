@@ -1,6 +1,6 @@
 import React from 'react';
 import Auth from '../../lib/Auth';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import OAuthButton from '../auth/OAuthButton';
 
 const Navbar = ({ history }) => {
@@ -13,7 +13,9 @@ const Navbar = ({ history }) => {
 
   return(
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <a className="navbar-brand" href="#">Home</a>
+
+      <Link to="/" className="nav-link">Home</Link>
+
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
@@ -21,18 +23,11 @@ const Navbar = ({ history }) => {
         <ul className="navbar-nav">
 
           <li className="nav-item active">
-            <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+            <OAuthButton className="nav-link" provider="spotify" />
           </li>
-
-          <li className="nav-item active">
-            <OAuthButton provider="spotify" />
-          </li>
-
-
-
 
           <li className="nav-item">
-            <a className="nav-link" href="#">User Page</a>
+            <a className="nav-link" href="#">Your Profile</a>
           </li>
 
           <li className="nav-item dropdown">

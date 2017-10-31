@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Axios from 'axios';
 import Auth from '../../lib/Auth';
 import GoogleMap from '../google/GoogleMap';
@@ -45,9 +45,9 @@ class PlansShow extends React.Component {
             <BackButton history={this.props.history} />
 
             {/* EDIT BUTTON */}
-            {/* <Link to={`/plans/${this.state.plan.id}/edit`} className="standard-button">
+            <Link to={`/plans/${this.state.plan.id}/edit`} className="standard-button">
               <i className="fa fa-pencil" aria-hidden="true"></i><p>Edit Plan</p>
-            </Link> */}
+            </Link>
 
             {/* DELETE BUTTON */}
             {Auth.isAuthenticated() && <button className="main-button" onClick={this.deletePlan}>

@@ -44,13 +44,13 @@ class GoogleMap extends React.Component {
       this.directionsDisplay.setMap(this.map);
     }
 
-    // // when there are markers created,
-    // if (this.props.route) {
-    //   // display and set the markers of the route,
-    //   this.markersDisplay.setMarkers(this.props.route);
-    //   // set the markers and the route onto the map.
-    //   this.markersDisplay.setMap(this.map);
-    // }
+    // if there are markers created,
+    if (this.props.route) {
+      // display and set the markers of the route,
+      this.markersDisplay.setMarkers(this.props.route);
+      // set the markers and the route onto the map.
+      this.markersDisplay.setMap(this.map);
+    }
 
     // MARKERS ARRAY - SET TO EMPTY UNTIL USER CLICKS
     this.markers = [];
@@ -142,6 +142,11 @@ class GoogleMap extends React.Component {
       this.renderDirections();
     }
   }
+
+
+
+
+
 
   componentWillUnmount() {
     this.markers.forEach(marker => marker.setMap(null));

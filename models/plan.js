@@ -9,7 +9,8 @@ const planSchema = mongoose.Schema({
   difficulty: { type: String, required: 'Image is required' },
   image: { type: String, required: 'Image is required' },
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User'},
-  route: { type: Object }
+  route: { type: Object },
+  markers: { type: Object }
 });
 
 module.exports = mongoose.model('plan', planSchema);
