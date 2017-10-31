@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom';
 
 class OAuthButton extends React.Component {
   componentWillMount() {
+    console.log('will mount');
     this.provider = OAuth.getProvider(this.props.provider);
     if(!this.props.location.search.match(/code/) || localStorage.getItem('provider') !== this.props.provider) return false;
 
@@ -30,27 +31,33 @@ class OAuthButton extends React.Component {
   }
 
   render() {
+
+    console.log('rendering');
     console.log(window.location.origin + '/');
     // console.log(this.props.provider, provider);
+
     if (Auth.isAuthenticated()) {
       return (
-        <button onClick={() => {
+        <a onClick={() => {
           Auth.logout();
           this.props.history.push('/');
         }}>
           Logout
-        </button>
+        </a>
       );
     } else {
       return (
-        <a className="btn btn-primary"
-          href={this.provider.authLink}
-          onClick={this.setProvider}
-        >
-          Login with Spotify
-        </a>
+        <ul className="navbar-nav">
+          <a className="login-button"
+            href={this.provider.authLink}
+            onClick={this.setProvider}
+          >
+            Login with Spotify
+          </a>
+        </ul>
       );
     }
+
   }
 }
 

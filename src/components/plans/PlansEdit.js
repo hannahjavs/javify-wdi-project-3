@@ -9,13 +9,12 @@ class PlansEdit extends React.Component {
     plan: {
       title: '',
       location: '',
-      start: 0,
-      end: 0,
       date: '',
       playlist: '',
       genre: '',
       difficulty: '',
-      image: ''
+      image: '',
+      route: {}
     },
     errors: {},
     playlists: []

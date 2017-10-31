@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import 'bootstrap-css-only';
 // import 'font-awesome/css/font-awesome.css';
 import './scss/style.scss';
-import OAuthButton from './components/auth/OAuthButton';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+// import OAuthButton from './components/auth/OAuthButton';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from './components/utility/Routes';
-
+import Navbar from './components/utility/Navbar';
 
 class App extends React.Component {
   render() {
@@ -14,17 +14,15 @@ class App extends React.Component {
       <Router>
         <div className="container">
           <header>
-            <h1><Link to="/">PLANS</Link></h1>
-            <h2>For the <span>health</span> freaks & music lovers...</h2>
-            {/* <Navbar /> */}
-            <hr />
-            <OAuthButton provider="spotify" />
-            <div className="container">
-              <main>
-                <Routes />
-              </main>
-            </div>
+            <Navbar />
+            {/* <OAuthButton provider="spotify" /> */}
           </header>
+          <div className="container">
+            <main>
+              <Routes />
+            </main>
+          </div>
+
         </div>
       </Router>
     );

@@ -36,6 +36,22 @@ class GoogleMap extends React.Component {
       map: this.map
     });
 
+    // if there is a route created then,
+    if (this.props.route) {
+      // display and set the directions of the route,
+      this.directionsDisplay.setDirections(this.props.route);
+      // set the directions and the route onto the map
+      this.directionsDisplay.setMap(this.map);
+    }
+
+    // // when there are markers created,
+    // if (this.props.route) {
+    //   // display and set the markers of the route,
+    //   this.markersDisplay.setMarkers(this.props.route);
+    //   // set the markers and the route onto the map.
+    //   this.markersDisplay.setMap(this.map);
+    // }
+
     // MARKERS ARRAY - SET TO EMPTY UNTIL USER CLICKS
     this.markers = [];
 
@@ -93,6 +109,8 @@ class GoogleMap extends React.Component {
       // console.log($scope.planInfo.distance);
       this.directionsDisplay.setDirections(response);
       this.directionsDisplay.setMap(this.map);
+
+      this.props.updateRoute(response);
     });
   }
 
@@ -109,15 +127,16 @@ class GoogleMap extends React.Component {
     marker.addListener('dragend', () => this.renderDirections());
     marker.addListener('click', () => {
       const index = this.markers.indexOf(marker);
-      this.markers.splice(index, 1); //Remove the 
+      this.markers.splice(index, 1); //Remove one marker from the array INDEX
       marker.setMap(null);
       this.renderDirections();
       this.labelIndex--; //Decrement the labelIndex everytime a marker is removed
     });
 
-    // PUSHING MARKERS INTO MARKERS ARRAY
+    // PUSHING MARKERS INTO A MARKERS ARRAY
     this.markers.push(marker);
 
+    //If there is more than one marker in the array then draw a line (renderDirections) - render the directions.
     if (this.markers.length > 1) {
       console.log('drawing line');
       this.renderDirections();
@@ -129,7 +148,6 @@ class GoogleMap extends React.Component {
     this.markers = [];
     this.map = null;
   }
-
 
   render() {
     return (

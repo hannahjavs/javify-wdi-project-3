@@ -10,13 +10,12 @@ class PlansNew extends React.Component {
     plan: {
       title: '',
       location: '',
-      start: 0,
-      end: 0,
       date: '',
       playlist: '',
       genre: '',
       difficulty: '',
-      image: ''
+      image: '',
+      route: {}
     },
     errors: {},
     playlists: []
@@ -49,6 +48,14 @@ class PlansNew extends React.Component {
     this.setState({ plan });
   }
 
+  updateRoute = (route) => {
+    this.setState(prevState => {
+      const plan = { ...prevState.plan, route };
+
+      return { plan };
+    });
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     Axios
@@ -69,6 +76,7 @@ class PlansNew extends React.Component {
         playlists={this.state.playlists}
         getPlaylist={this.getPlaylist}
         errors={this.state.errors}
+        updateRoute={this.updateRoute}
       />
     );
   }

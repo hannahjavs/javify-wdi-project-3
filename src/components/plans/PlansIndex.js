@@ -2,6 +2,7 @@ import React from 'react';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
 import Auth from '../../lib/Auth';
+// import Carousel from '../utility/Carousel';
 
 class PlansIndex extends React.Component {
   state = {
@@ -18,99 +19,30 @@ class PlansIndex extends React.Component {
   render() {
     console.log(this.state.plans);
     return (
-      <main className="container">
-        <div className="row">
-          <div className="col-md-3">
-            {Auth.isAuthenticated() && <Link to="/plans/new" className="main-button">
-              <i className="fa fa-plus" aria-hidden="true"></i>Easy Going?
-            </Link>}
-          </div>
-
-          {/* MAPPING OVER INDEX OF EVERYONES PLANS */}
-          <div className="row">
-            {this.state.plans.map(plan => {
-              return(
-
-                <div key={plan.id} className="image-tile col-sm-6 col-md-6 col-lg-3">
-                  <Link to={`/plans/${plan.id}`}>
-                    <img src={plan.image} className="img-responsive" />
-                  </Link>
-                  <h3>Title: {plan.title}</h3>
-                  <p>Location: {plan.location}</p>
-                  <p>Difficulty: {plan.difficulty}</p>
-                  <p>Posted By: {plan.createdBy.username}</p>
-                </div>
-              );
-            })}
-          </div>
+      <div className="row">
+        <div className="page-banner col-md-12">
+          {Auth.isAuthenticated() && <Link to="/plans/new" className="main-button">
+            <i className="fa fa-plus" aria-hidden="true"></i>EASY
+          </Link>}
         </div>
-      </main>
+
+        {/* {this.state.plans && <Carousel images={this.state.plans} />} */}
+
+        {this.state.plans.map(plan => {
+          return(
+            <div key={plan.id} className="image-tile col-md-4 col-sm-6 col-xs-12">
+              <Link to={`/plans/${plan.id}`}>
+                <img src={plan.image} className="img-responsive" />
+              </Link>
+              <p>Title: {plan.title}</p>
+              <p>Location: {plan.location}</p>
+              <p>Difficulty: {plan.difficulty}</p>
+            </div>
+          );
+        })}
+      </div>
     );
   }
 }
 
 export default PlansIndex;
-
-
-
-
-
-
-// import React from 'react';
-// import Axios from 'axios';
-// import { Link } from 'react-router-dom';
-// import Auth from '../../lib/Auth';
-//
-// class PiesIndex extends React.Component {
-//   state = {
-//     pies: []
-//   }
-//
-//   componentWillMount() {
-//     Axios
-//       .get('/api/pies')
-//       .then(res => this.setState({ pies: res.data }))
-//       .catch(err => console.log(err));
-//   }
-//
-//   render() {
-//     return (
-//       <div>
-//
-//         <div className="row">
-//           <div className="page-banner col-md-12">
-//
-//             {/* UNAUTHENTICATED ADD NEW PIE BUTTON LINK*/}
-//             {/* <Link to="/pies/new" className="main-button">
-//               <i className="fa fa-plus" aria-hidden="true"></i> ADD A PIE
-//             </Link> */}
-//
-//             {/* AUTHENTICATED ADD NEW PIE BUTTON LINK*/}
-//             {Auth.isAuthenticated() && <Link to="/pies/new" className="main-button">
-//               <i className="fa fa-plus" aria-hidden="true"></i>ADD PIE
-//             </Link>}
-//
-//           </div>
-//
-//           {/* Mapping Over The Whole Index Of The Pies*/}
-//           {this.state.pies.map(pie => {
-//             return(
-//               <div key={pie.id} className="image-tile col-md-4 col-sm-6 col-xs-12">
-//
-//                 {/* SHOW SPECIFIC PIE LINK */}
-//                 <Link to={`/pies/${pie.id}`}>
-//                   <img src={pie.image} className="img-responsive" />
-//                 </Link>
-//                 <h3>{pie.title}</h3>
-//                 <p>{pie.tastingNotes}</p>
-//                 <p>{pie.category}</p>
-//               </div>
-//             );
-//           })}
-//         </div>
-//       </div>
-//     );
-//   }
-// }
-//
-// export default PiesIndex;

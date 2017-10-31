@@ -3,16 +3,13 @@ const mongoose = require('mongoose');
 const planSchema = mongoose.Schema({
   title: { type: String, required: 'Title is required' },
   location: { type: String, required: 'Title is required' },
-
-  start: { lat: Number, lng: Number },
-  end: { lat: Number, lng: Number },
-
   date: { type: String },
   playlist: { type: String },
   genre: { type: String },
   difficulty: { type: String, required: 'Image is required' },
   image: { type: String, required: 'Image is required' },
-  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User'}
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User'},
+  route: { type: Object }
 });
 
 module.exports = mongoose.model('plan', planSchema);
