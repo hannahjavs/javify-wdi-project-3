@@ -25,7 +25,7 @@ class PlansShow extends React.Component {
       .delete(`/api/plans/${this.props.match.params.id}`, {
         headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
       })
-      .then(() => this.props.history.push('/'))
+      .then(() => this.props.history.push('/plans'))
       .catch(err => console.log(err));
   }
 
@@ -37,7 +37,7 @@ class PlansShow extends React.Component {
 
             {/* ROUTE IMAGE */}
             <img src={this.state.plan.image} className="img-responsive" />
-            <h3>Title: {this.state.plan.title}</h3>
+            <h3>{this.state.plan.title}</h3>
             <h3>Location: {this.state.plan.location}</h3>
             <p>Difficulty: {this.state.plan.difficulty}</p>
 

@@ -3,6 +3,7 @@ const plans  = require('../controllers/plan');
 const oauth  = require('../controllers/oauth');
 const spotify  = require('../controllers/spotify');
 const secureRoute = require('../lib/secureRoute');
+// const user = require('../controllers/user');
 
 router.route('/plans')
   .get(plans.index)
@@ -24,6 +25,11 @@ router.route('/spotify/playlists')
 // GET A SINGLE PLAYLIST AND THE ID FROM THE USERS SPOTIFY ACCOUNT
 router.route('/spotify/playlists/:playlistId')
   .get(spotify.getPlaylist);
+
+// ROUTE FOR PROFILE PAGE
+// router.route('/users/:id')
+//   .all(secureRoute)
+//   .get(users.show);
 
 router.all('/*', (req, res) => res.notFound());
 

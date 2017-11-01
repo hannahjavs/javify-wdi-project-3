@@ -18,19 +18,6 @@ function createRoute(req, res, next) {
     .catch(next);
 }
 
-// function showRoute(req, res, next) {
-//   Plan
-//     .findById(req.params.id)
-//     .populate('items.place createdBy')
-//     .exec()
-//     .then((plan) => {
-//       if(!plan) return res.notFound();
-//
-//       return res.json(plan);
-//     })
-//     .catch(next);
-// }
-
 function showRoute(req, res, next) {
   Plan
     .findById(req.params.id)

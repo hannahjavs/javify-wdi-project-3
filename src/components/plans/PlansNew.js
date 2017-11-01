@@ -63,7 +63,7 @@ class PlansNew extends React.Component {
       .post('/api/plans', this.state.plan, {
         headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
       })
-      .then(() => this.props.history.push('/'))
+      .then(() => this.props.history.push('/plans'))
       .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
