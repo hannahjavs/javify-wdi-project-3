@@ -30,22 +30,23 @@ class PlansShow extends React.Component {
   }
 
   render() {
+    const {title, location, image, difficulty, route, id} = this.state.plan;
     return (
       <div className="container">
         <div className="row">
           <div className="col-4 leftColShow">
 
             {/* ROUTE IMAGE */}
-            <img src={this.state.plan.image} className="img-responsive" />
-            <h3>{this.state.plan.title}</h3>
-            <h3>Location: {this.state.plan.location}</h3>
-            <p>Difficulty: {this.state.plan.difficulty}</p>
+            <img src={image} className="img-responsive" />
+            <h3>{title}</h3>
+            <h3>Location: {location}</h3>
+            <p>Difficulty: {difficulty}</p>
 
             {/* BACK BUTTON */}
             <BackButton history={this.props.history} />
 
             {/* EDIT BUTTON */}
-            <Link to={`/plans/${this.state.plan.id}/edit`} className="standard-button">
+            <Link to={`/plans/${id}/edit`} className="standard-button">
               <i className="fa fa-pencil" aria-hidden="true"></i><p>Edit Plan</p>
             </Link>
 
@@ -55,7 +56,7 @@ class PlansShow extends React.Component {
             </button>}
           </div>
 
-          { this.state.plan.route && <GoogleMap route={this.state.plan.route} />}
+          {this.state && <GoogleMap route={route} />}
 
         </div>
       </div>

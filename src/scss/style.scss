@@ -1,5 +1,6 @@
 @import "plansindex";
 @import "userprofile";
+@import "navbar";
 
 // html:
 // <div id="sitewide-notice" class="is-active">
@@ -30,9 +31,9 @@
 // }
 // // FOR THE NAVBAR DROPDOWN NOTIFICATION ^^^
 
-.navbar-nav {
-  color: #262626;
-}
+// .navbar-nav {
+//   color: #262626;
+// }
 
 body, html {
   height: 100%;
@@ -56,6 +57,12 @@ p {
   color: white;
   background-color: #1ed760;
   border-radius: 20px;
+}
+
+.logout {
+  color: #007bff !important;
+  cursor: pointer;
+  margin-right: 5px;
 }
 
 button, .main-button, .standard-button {

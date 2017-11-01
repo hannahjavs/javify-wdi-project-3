@@ -63,22 +63,24 @@ class PlansNew extends React.Component {
       .post('/api/plans', this.state.plan, {
         headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
       })
-      .then(() => this.props.history.push('/plans'))
+      .then(() => this.props.history.push('/'))
       .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
   render() {
     return (
-      <PlansForm
-        history={this.props.history}
-        handleSubmit={this.handleSubmit}
-        handleChange={this.handleChange}
-        plan={this.state.plan}
-        playlists={this.state.playlists}
-        getPlaylist={this.getPlaylist}
-        errors={this.state.errors}
-        updateRoute={this.updateRoute}
-      />
+      <div className="container">
+        <PlansForm
+          history={this.props.history}
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          plan={this.state.plan}
+          playlists={this.state.playlists}
+          getPlaylist={this.getPlaylist}
+          errors={this.state.errors}
+          updateRoute={this.updateRoute}
+        />
+      </div>
     );
   }
 }

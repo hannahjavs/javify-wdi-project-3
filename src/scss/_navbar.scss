@@ -1,0 +1,20 @@
+.navWrap {
+  border-bottom: 2px solid grey;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.navLeft {
+
+}
+
+.navRight {
+}
+
+.navLink {
+  margin-right: 5px;
+  &.navHome {
+    margin-left: 5px;
+  }
+}

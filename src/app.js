@@ -12,17 +12,13 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div className="container">
+        <div>
           <header>
             <Navbar />
-            {/* <OAuthButton provider="spotify" /> */}
           </header>
-          <div className="container">
-            <main>
-              <Routes />
-            </main>
-          </div>
-
+          <main>
+            <Routes />
+          </main>
         </div>
       </Router>
     );

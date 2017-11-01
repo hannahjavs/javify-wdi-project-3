@@ -94,9 +94,10 @@ function PlansForm({ handleSubmit, handleChange, plan, playlists, getPlaylist, e
             {errors.difficulty && <small className="has-error">{errors.difficulty}</small>}
           </div>
 
+
+
           {/* SELECT A PLAYLIST FROM SPOTIFY */}
-          {/* <div className={errors.playlist ? 'form-group has-error' :
-            'form-group'}> */}
+          {/* NOTE: ADD SOME ERROR MESSAGES IF USED DOES NOT SELECT PLAYLIST */}
           <label htmlFor="playlist">Playlist</label>
           {playlists && playlists.map(playlist => (
             <div className="radio" key={playlist.id}>
@@ -108,7 +109,6 @@ function PlansForm({ handleSubmit, handleChange, plan, playlists, getPlaylist, e
                   value={playlist.id}
                   checked={playlist.id === plan.playlist}
                   onChange={handleChange} />
-                {/* {errors.playlist && <small className="has-error">{errors.playlist}</small>} */}
 
                 {playlist.name}
               </label>
@@ -117,6 +117,7 @@ function PlansForm({ handleSubmit, handleChange, plan, playlists, getPlaylist, e
               {playlist.tracks.items && playlist.tracks.items.map(item => <audio controls key={item.track.id} src={item.track.preview_url}></audio>)}
             </div>
           ))}
+
 
           {/* SAVE PLAN */}
           <div>

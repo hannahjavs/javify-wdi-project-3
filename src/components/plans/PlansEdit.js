@@ -60,15 +60,17 @@ class PlansEdit extends React.Component {
   render() {
     console.log(this.state);
     return (
-      <PlansForm
-        history={this.props.history}
-        handleSubmit={this.handleSubmit}
-        handleChange={this.handleChange}
-        plan={this.state.plan}
-        errors={this.state.errors}
-        playlists={this.state.playlists}
-        getPlaylist={this.getPlaylist}
-      />
+      <div className="container">
+        <PlansForm
+          history={this.props.history}
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          plan={this.state.plan}
+          errors={this.state.errors}
+          playlists={this.state.playlists}
+          getPlaylist={this.getPlaylist}
+        />
+      </div>
     );
   }
 }

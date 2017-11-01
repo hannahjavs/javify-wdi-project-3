@@ -38,7 +38,7 @@ class OAuthButton extends React.Component {
 
     if (Auth.isAuthenticated()) {
       return (
-        <a onClick={() => {
+        <a className="logout" onClick={() => {
           Auth.logout();
           this.props.history.push('/');
         }}>
@@ -47,14 +47,14 @@ class OAuthButton extends React.Component {
       );
     } else {
       return (
-        <ul className="navbar-nav">
-          <a className="login-button"
-            href={this.provider.authLink}
-            onClick={this.setProvider}
-          >
-            Login with Spotify
-          </a>
-        </ul>
+
+        <a
+          href={this.provider.authLink}
+          onClick={this.setProvider}
+        >
+          Login with Spotify
+        </a>
+
       );
     }
 
