@@ -1,8 +1,7 @@
 import React from 'react';
 import BackButton from '../utility/BackButton';
-import GoogleMap from '../google/GoogleMap';
 
-function PlansForm({ handleSubmit, handleChange, plan, playlists, getPlaylist, errors, history, updateRoute }) {
+function PlansForm({ handleSubmit, handleChange, plan, playlists, getPlaylist, errors, history }) {
   return (
     // <div className="row">
     //   <div className="page-banner col-md-12">
@@ -123,8 +122,6 @@ function PlansForm({ handleSubmit, handleChange, plan, playlists, getPlaylist, e
           <div>
             <button className="save-button">Save</button>
           </div>
-
-          <GoogleMap updateRoute={updateRoute} center={{ lat: 51.5074, lng: -0.1278 }} />
 
         </form>
       </div>

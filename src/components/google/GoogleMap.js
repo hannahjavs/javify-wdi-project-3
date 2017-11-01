@@ -7,7 +7,6 @@ class GoogleMap extends React.Component {
   // Each marker is labeled with a single numbered character.
 
   componentDidMount() {
-
     function success(pos) {
       console.log(this);
       console.log(pos);
@@ -44,16 +43,12 @@ class GoogleMap extends React.Component {
       this.directionsDisplay.setMap(this.map);
     }
 
-    // if there are markers created,
-    if (this.props.route) {
-      // display and set the markers of the route,
-      this.markersDisplay.setMarkers(this.props.route);
-      // set the markers and the route onto the map.
-      this.markersDisplay.setMap(this.map);
-    }
-
     // MARKERS ARRAY - SET TO EMPTY UNTIL USER CLICKS
     this.markers = [];
+
+    if(this.props.markers) {
+      this.props.markers.forEach(location => this.addMarker(location));
+    }
 
     const options = {
       enableHighAccuracy: true
@@ -121,8 +116,13 @@ class GoogleMap extends React.Component {
       position: location,
       label: this.labels[this.labelIndex++ % this.labels.length], //Increment the labelIndex everytime a marker is created
       map: this.map,
-      draggable: true
+      draggable: !!this.props.updateMarkers
     });
+
+    // PUSHING MARKERS INTO A MARKERS ARRAY
+    this.markers.push(marker);
+
+    if(!this.props.updateMarkers) return false;
 
     marker.addListener('dragend', () => this.renderDirections());
     marker.addListener('click', () => {
@@ -133,14 +133,14 @@ class GoogleMap extends React.Component {
       this.labelIndex--; //Decrement the labelIndex everytime a marker is removed
     });
 
-    // PUSHING MARKERS INTO A MARKERS ARRAY
-    this.markers.push(marker);
-
     //If there is more than one marker in the array then draw a line (renderDirections) - render the directions.
     if (this.markers.length > 1) {
       console.log('drawing line');
       this.renderDirections();
     }
+
+    const markerPositions = this.markers.map(marker => marker.getPosition().toJSON());
+    this.props.updateMarkers(markerPositions);
   }
 
 

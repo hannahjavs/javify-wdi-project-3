@@ -10,7 +10,7 @@ const planSchema = mongoose.Schema({
   image: { type: String, required: 'Image is required' },
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User'},
   route: { type: Object },
-  markers: { type: Object }
+  markers: { type: Array }
 });
 
 module.exports = mongoose.model('plan', planSchema);

@@ -4,6 +4,7 @@ import Auth from '../../lib/Auth';
 // import Promise from 'bluebird';
 
 import PlansForm from './PlansForm';
+import GoogleMap from '../google/GoogleMap';
 
 class PlansNew extends React.Component {
   state = {
@@ -57,6 +58,14 @@ class PlansNew extends React.Component {
     });
   }
 
+  updateMarkers = (markers) => {
+    this.setState(prevState => {
+      const plan = { ...prevState.plan, markers };
+
+      return { plan };
+    });
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     Axios
@@ -79,7 +88,9 @@ class PlansNew extends React.Component {
           getPlaylist={this.getPlaylist}
           errors={this.state.errors}
           updateRoute={this.updateRoute}
+          updateMarkers={this.updateMarkers}
         />
+        <GoogleMap updateRoute={this.updateRoute} updateMarkers={this.updateMarkers} center={{ lat: 51.5074, lng: -0.1278 }} />
       </div>
     );
   }

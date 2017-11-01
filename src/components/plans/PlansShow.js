@@ -15,8 +15,8 @@ class PlansShow extends React.Component {
       .get(`/api/plans/${this.props.match.params.id}`)
       .then(res => this.setState({ plan: res.data }))
       .catch(err => {
-        if(err.response.status === 404) this.props.history.replace('/404');
         console.log(err);
+        if(err.response.status === 404) this.props.history.replace('/404');
       });
   }
 
@@ -30,7 +30,7 @@ class PlansShow extends React.Component {
   }
 
   render() {
-    const {title, location, image, difficulty, route, id} = this.state.plan;
+    const {title, location, image, difficulty, route, markers, id} = this.state.plan;
     return (
       <div className="container">
         <div className="row">
@@ -56,7 +56,7 @@ class PlansShow extends React.Component {
             </button>}
           </div>
 
-          {this.state && <GoogleMap route={route} />}
+          {route && <GoogleMap route={route} markers={markers} />}
 
         </div>
       </div>

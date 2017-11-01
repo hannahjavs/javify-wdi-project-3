@@ -3,6 +3,7 @@ import Axios from 'axios';
 import Auth from '../../lib/Auth';
 
 import PlansForm from './PlansForm';
+import GoogleMap from '../google/GoogleMap';
 
 class PlansEdit extends React.Component {
   state = {
@@ -15,7 +16,7 @@ class PlansEdit extends React.Component {
       difficulty: '',
       image: '',
       route: {},
-      markers: {}
+      markers: []
     },
     errors: {},
     playlists: []
@@ -47,6 +48,23 @@ class PlansEdit extends React.Component {
     const plan = Object.assign({}, this.state.plan, { [name]: value });
     this.setState({ plan });
   }
+
+  updateRoute = (route) => {
+    this.setState(prevState => {
+      const plan = { ...prevState.plan, route };
+
+      return { plan };
+    });
+  }
+
+  updateMarkers = (markers) => {
+    this.setState(prevState => {
+      const plan = { ...prevState.plan, markers };
+
+      return { plan };
+    });
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     Axios
@@ -69,7 +87,10 @@ class PlansEdit extends React.Component {
           errors={this.state.errors}
           playlists={this.state.playlists}
           getPlaylist={this.getPlaylist}
+          updateRoute={this.updateRoute}
+          updateMarkers={this.updateMarkers}
         />
+        {this.state.plan.route.routes && <GoogleMap updateRoute={this.updateRoute} updateMarkers={this.updateMarkers} route={this.state.plan.route} markers={this.state.plan.markers} center={{ lat: 51.5074, lng: -0.1278 }} />}
       </div>
     );
   }
