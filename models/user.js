@@ -9,9 +9,16 @@ const userSchema = new mongoose.Schema({
   image: { type: String }
 });
 
+userSchema.virtual('plans', {
+  ref: 'Plan',
+  localField: '_id',
+  foreignField: 'createdBy'
+});
+
 module.exports = mongoose.model('User', userSchema);
 
-
+// this.state.user.PlansEdit()
+// .populate
 
 
 

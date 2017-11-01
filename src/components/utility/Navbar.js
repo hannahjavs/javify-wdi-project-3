@@ -14,7 +14,7 @@ const Navbar = ({ history }) => {
   return(
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
 
-      <Link to="/plans" className="nav-link">Home</Link>
+      <Link to="/" className="nav-link">Home</Link>
 
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
@@ -27,7 +27,7 @@ const Navbar = ({ history }) => {
           </li>
 
           <li className="nav-item">
-            <Link to="/" className="nav-link">Your Profile</Link>
+            <Link to={'/users/' + Auth.getPayload().userId} className="nav-link">Your Profile</Link>
           </li>
 
           {/* <li className="nav-item dropdown">
