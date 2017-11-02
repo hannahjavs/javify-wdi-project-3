@@ -1,10 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import Auth from '../../lib/Auth';
-// import Promise from 'bluebird';
-
 import PlansForm from './PlansForm';
-import GoogleMap from '../google/GoogleMap';
 
 class PlansNew extends React.Component {
   state = {
@@ -92,7 +89,7 @@ class PlansNew extends React.Component {
         />
 
         {/* Use geolocation to center the map where the user is so they can plot a route that they have recently done to where they are */}
-        <GoogleMap updateRoute={this.updateRoute} updateMarkers={this.updateMarkers} geolocate={true} />
+        {/* <GoogleMap updateRoute={this.updateRoute} updateMarkers={this.updateMarkers} geolocate={true} /> */}
       </div>
     );
   }

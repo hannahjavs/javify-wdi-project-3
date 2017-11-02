@@ -1,9 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import Auth from '../../lib/Auth';
-
 import PlansForm from './PlansForm';
-import GoogleMap from '../google/GoogleMap';
 
 class PlansEdit extends React.Component {
   state = {
@@ -80,6 +78,7 @@ class PlansEdit extends React.Component {
     return (
       <div className="container">
         <PlansForm
+          edit={true}
           history={this.props.history}
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
@@ -93,7 +92,7 @@ class PlansEdit extends React.Component {
 
         {/* updating the state of the google map on the edit page */}
         {/* updates the route and the markers separately because they are two separate things - the markers are an array */}
-        {this.state.plan.route.routes && <GoogleMap updateRoute={this.updateRoute} updateMarkers={this.updateMarkers} route={this.state.plan.route} markers={this.state.plan.markers} />}
+        {/* {this.state.plan.route.routes && <GoogleMap updateRoute={this.updateRoute} updateMarkers={this.updateMarkers} route={this.state.plan.route} markers={this.state.plan.markers} />} */}
       </div>
     );
   }

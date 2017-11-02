@@ -1,18 +1,15 @@
 import React from 'react';
 import BackButton from '../utility/BackButton';
 
-function PlansForm({ handleSubmit, handleChange, plan, playlists, getPlaylist, errors, history }) {
+import GoogleMap from '../google/GoogleMap';
+
+function PlansForm({ edit, handleSubmit, handleChange, plan, playlists, getPlaylist, errors, history, updateRoute, updateMarkers }) {
   return (
-    // <div className="row">
-    //   <div className="page-banner col-md-12">
+    <div className="row">
+      <div className="col-lg-6 leftColShow">
+        <BackButton history={history} />
 
-    <div className="container">
-      <div className="row">
-        <div className="col-4 leftColShow">
-
-          <BackButton history={history} />
-        </div>
-        <form onSubmit={handleSubmit} className="col-md-6">
+        <form onSubmit={handleSubmit}>
 
           {/* PLAN TITLE */}
           <div className={errors.title ? 'form-group has-error' :
@@ -45,7 +42,7 @@ function PlansForm({ handleSubmit, handleChange, plan, playlists, getPlaylist, e
           </div>
 
           {/* DATE OF PLAN POSTED */}
-          <div className={errors.date ? 'form-group has-error' :
+          {/* <div className={errors.date ? 'form-group has-error' :
             'form-group'}>
             <label htmlFor="date">Date</label>
             <input
@@ -57,7 +54,7 @@ function PlansForm({ handleSubmit, handleChange, plan, playlists, getPlaylist, e
               onChange={handleChange}
             />
             {errors.date && <small className="has-error">{errors.date}</small>}
-          </div>
+          </div> */}
 
 
           {/* PLAN IMAGE */}
@@ -77,7 +74,7 @@ function PlansForm({ handleSubmit, handleChange, plan, playlists, getPlaylist, e
 
           {/* PLAN DIFFICULTY */}
           <div className={errors.difficulty ? 'form-group has-error' : 'form-group'}>
-            <label htmlFor="difficulty">Difficulty</label>
+            <label htmlFor="difficulty">Categorise</label>
             <select
               className="form-control"
               id="difficulty"
@@ -85,7 +82,7 @@ function PlansForm({ handleSubmit, handleChange, plan, playlists, getPlaylist, e
               value={plan.difficulty}
               onChange={handleChange}
             >
-              <option value="" disabled>Please Select</option>
+              <option value="" disabled>How difficult is the route?</option>
               <option>EASY</option>
               <option>MEDIUM</option>
               <option>HARD</option>
@@ -94,10 +91,9 @@ function PlansForm({ handleSubmit, handleChange, plan, playlists, getPlaylist, e
           </div>
 
 
-
           {/* SELECT A PLAYLIST FROM SPOTIFY */}
           {/* NOTE: ADD SOME ERROR MESSAGES IF USED DOES NOT SELECT PLAYLIST */}
-          <label htmlFor="playlist">Playlist</label>
+          <label htmlFor="playlist">Select the playlist you usually listen to on this route:</label>
           {playlists && playlists.map(playlist => (
             <div className="radio" key={playlist.id}>
               <label>
@@ -117,13 +113,20 @@ function PlansForm({ handleSubmit, handleChange, plan, playlists, getPlaylist, e
             </div>
           ))}
 
-
-          {/* SAVE PLAN */}
-          <div>
-            <button className="save-button">Save</button>
-          </div>
-
+          <button className="save-button">Save</button>
         </form>
+      </div>
+
+      {/* Use geolocation to center the map where the user is so they can plot a route that they have recently done to where they are */}
+      <div className="col-lg-6 leftColShow">
+        {
+          edit && plan.route.routes ?
+            <GoogleMap updateRoute={updateRoute} updateMarkers={updateMarkers} route={plan.route} markers={plan.markers} />
+            :
+            <div>
+              <GoogleMap updateRoute={updateRoute} updateMarkers={updateMarkers} geolocate={true} />
+            </div>
+        }
       </div>
     </div>
   );

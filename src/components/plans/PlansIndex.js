@@ -27,7 +27,6 @@ class PlansIndex extends React.Component {
             {Auth.isAuthenticated() && <Link to="/plans/new" className="main-button">
               <i className="fa fa-plus" aria-hidden="true"></i>Create a walking or running route
             </Link>}
-            {/* <p>{plan.createdBy.username}</p> */}
           </div>
           {/* {this.state.plans && <Carousel images={this.state.plans} />} */}
 

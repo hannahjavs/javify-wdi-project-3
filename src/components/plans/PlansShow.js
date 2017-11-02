@@ -52,6 +52,12 @@ class PlansShow extends React.Component {
             <p><strong>Location:</strong> {location}</p>
             <p><strong>Difficulty:</strong> {difficulty}</p>
             <p><strong>Spotify Playlist Name:</strong> {this.state.playlist.name}</p>
+            {
+              this.state.playlist.name &&
+                <div>
+                  <p><strong>Playlist selected from Spotify: </strong>{ this.state.playlist.name }</p>
+                </div>
+            }
 
             {/* BACK BUTTON */}
             <BackButton history={this.props.history} />
@@ -68,16 +74,9 @@ class PlansShow extends React.Component {
           </div>
 
           {/* GOOGLE MAP WITH CURRENT ROUTE SHOWING */}
-          <div className="col-4 offset-1 rightColShow">
+          <div className="col-7 offset-1 rightColShow">
             {route && <GoogleMap route={route} markers={markers} center={{ lat: markers[0].lat, lng: markers[1].lng }} geolocate={false}/>}
           </div>
-
-          {
-            this.state.playlist.name &&
-              <div>
-                <h3>{ this.state.playlist.name }</h3>
-              </div>
-          }
 
         </div>
       </div>

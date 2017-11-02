@@ -44,21 +44,29 @@ class UserProfile extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-4 leftColShow">
-            <h1><strong>{this.state.user.username}</strong> Profile Page</h1>
-            <h2>Current Spotify Image:</h2> <img src={this.state.user.image} className="spotify-profile-img" />
-            <h3>Spotify Followers: {this.state.user.followers}</h3>
-            <p>Spotify ID: {this.state.user.spotifyId}</p>
+          <div className="col-sm-4">
+            <hr />
+            <h1 className="profileName"><strong>{this.state.user.username}</strong></h1>
+            <img src={this.state.user.image} className="spotify-profile-img" />
+            <h3 className="profileText">Spotify Followers: {this.state.user.followers}</h3>
+            <p className="profileText">Spotify ID: {this.state.user.spotifyId}</p>
           </div>
 
-          {this.state.user.plans && this.state.user.plans.map(plan => (
-            <div key={plan.id}><p>{plan.title}</p></div>
-          )
-          )}
+          <div className="col-sm-8">
+            <hr />
+            <p><strong>Plans you have posted:</strong></p>
+            {this.state.user.plans && this.state.user.plans.map(plan => (
+              <Link key={plan.id} className="info" to={`/plans/${plan.id}`}><div>{plan.title}</div></Link>
+            )
+            )}
+          </div>
 
-          <div className="col-4 rightColShow">
+          <hr />
+          <div className="row">
+            <hr />
+            <h4 className="listenTo">You generally listen to the following artists and albums on spotify</h4>
             {this.state.playlists && this.state.playlists.map(playlist => (
-              <div className="col-md-4" key={playlist.id}>
+              <div key={playlist.id} className="col-md-4 albumsWrap">
                 <p>{playlist.name}</p>
                 <div className="image-tile">
                   <img src={playlist.images[0].url}
