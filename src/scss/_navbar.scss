@@ -1,12 +1,44 @@
 .navWrap {
-  border-bottom: 2px solid grey;
+  font-family: 'Work Sans', sans-serif;
   display: flex;
   justify-content: space-between;
-  padding: 10px 0;
+  padding: 10px 0px 20px;
+  background-color: #fff;
 }
 
 .navLeft {
+  margin: 10px;
+}
 
+.navCenter {
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 10px 10px 10px 10px;
+  text-align: center;
+}
+
+.headphone-icon, .spotify-icon, .sound-icon {
+  height: 30px;
+  width: 30px;
+  margin: 5px 1px 5px 1px;
+}
+
+.spotify-icon {
+  height: 30px;
+  width: 30px;
+  margin: 5px 20px 5px 1px;
+}
+
+.sound-icon {
+  height: 30px;
+  width: 30px;
+  margin: 5px 1px 5px 15px;
+}
+
+.profile-icon {
+  height: 30px;
+  width: 30px;
+  margin: 5px 1px 5px 15px;
 }
 
 .navRight {
@@ -14,7 +46,12 @@
 
 .navLink {
   margin-right: 5px;
+  color: #003569;
   &.navHome {
     margin-left: 5px;
   }
+}
+
+a {
+  text-decoration: none !important;
 }

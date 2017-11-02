@@ -21,6 +21,7 @@ class PlansIndex extends React.Component {
     return (
       <div className="container">
         <div className="row" id="plansindex">
+          <h1>Search For Routes</h1>
           <div className="page-banner col-md-12">
             {Auth.isAuthenticated() && <Link to="/plans/new" className="main-button">
               <i className="fa fa-plus" aria-hidden="true"></i>EASY
@@ -36,15 +37,15 @@ class PlansIndex extends React.Component {
                   <img src={plan.image} className="img-responsive" />
                   <div className="overlay">
                     <h2>{plan.title}</h2>
+                    <h2>Difficulty: {plan.difficulty}</h2>
                     <Link className="info" to={`/plans/${plan.id}`}>
-                  View route
+                  SHOW
                     </Link>
                   </div>
                 </div>
 
                 <div className="img-inner">
-                  <p>Location: {plan.location}</p>
-                  <p>Difficulty: {plan.difficulty}</p>
+                  <h1><strong>Location: {plan.location}</strong></h1>
                   <p>Posted By: {plan.createdBy.username}</p>
                 </div>
               </div>
