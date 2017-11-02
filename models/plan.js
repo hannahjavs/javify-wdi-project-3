@@ -3,9 +3,7 @@ const mongoose = require('mongoose');
 const planSchema = mongoose.Schema({
   title: { type: String, required: 'Title is required' },
   location: { type: String, required: 'Location is required' },
-  // date: { type: String },
   playlist: { type: String },
-  // genre: { type: String },
   difficulty: { type: String, required: 'Level of difficulty is required' },
   image: { type: String, required: 'Image is required' },
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User'},
