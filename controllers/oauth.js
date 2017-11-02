@@ -11,6 +11,7 @@ function spotify(req, res, next) {
     url: 'https://accounts.spotify.com/api/token',
     // Form because you are POSTing
     form: {
+      // code below is for deploying to heroku and env at the top is required
       redirect_uri: env === 'production' ? 'https://javify.herokuapp.com/' : 'http://localhost:8000/',
       grant_type: 'authorization_code',
       client_id: process.env.SPOTIFY_CLIENT_ID,
