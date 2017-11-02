@@ -13,7 +13,7 @@ const planSchema = mongoose.Schema({
   markers: { type: Array }
 });
 
-module.exports = mongoose.model('plan', planSchema);
+module.exports = mongoose.model('Plan', planSchema);
 
 
 

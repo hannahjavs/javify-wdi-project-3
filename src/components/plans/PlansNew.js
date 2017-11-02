@@ -90,7 +90,9 @@ class PlansNew extends React.Component {
           updateRoute={this.updateRoute}
           updateMarkers={this.updateMarkers}
         />
-        <GoogleMap updateRoute={this.updateRoute} updateMarkers={this.updateMarkers} center={{ lat: 51.5074, lng: -0.1278 }} />
+
+        {/* Use geolocation to center the map where the user is so they can plot a route that they have recently done to where they are */}
+        <GoogleMap updateRoute={this.updateRoute} updateMarkers={this.updateMarkers} geolocate={true} />
       </div>
     );
   }

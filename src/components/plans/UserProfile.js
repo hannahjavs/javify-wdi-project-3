@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Axios from 'axios';
 import Auth from '../../lib/Auth';
 // import BackButton from '../utility/BackButton';
@@ -21,7 +21,6 @@ class UserProfile extends React.Component {
         if(err.response.status === 404) this.props.history.replace('/404');
         console.log(err);
       });
-
   }
 
   componentDidMount() {
@@ -44,14 +43,20 @@ class UserProfile extends React.Component {
     console.log(this.state.user);
     return (
       <div className="container">
-        <div className="profile-main">
-          <h1><strong>{this.state.user.username}</strong> Profile Page</h1>
-          <h2>Current Spotify Image:</h2> <img src={this.state.user.image} className="spotify-profile-img" />
-          <h3>Spotify Followers: {this.state.user.followers}</h3>
-          <p>Spotify ID: {this.state.user.spotifyId}</p>
+        <div className="row">
+          <div className="col-4 leftColShow">
+            <h1><strong>{this.state.user.username}</strong> Profile Page</h1>
+            <h2>Current Spotify Image:</h2> <img src={this.state.user.image} className="spotify-profile-img" />
+            <h3>Spotify Followers: {this.state.user.followers}</h3>
+            <p>Spotify ID: {this.state.user.spotifyId}</p>
+          </div>
 
-          {/* <p>Users playlists from spotify: {this.state.user.playlist.name}</p> */}
-          <div>
+          {this.state.user.plans && this.state.user.plans.map(plan => (
+            <div key={plan.id}><p>{plan.title}</p></div>
+          )
+          )}
+
+          <div className="col-4 rightColShow">
             {this.state.playlists && this.state.playlists.map(playlist => (
               <div className="col-md-4" key={playlist.id}>
                 <p>{playlist.name}</p>

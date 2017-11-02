@@ -90,10 +90,16 @@ class PlansEdit extends React.Component {
           updateRoute={this.updateRoute}
           updateMarkers={this.updateMarkers}
         />
-        {this.state.plan.route.routes && <GoogleMap updateRoute={this.updateRoute} updateMarkers={this.updateMarkers} route={this.state.plan.route} markers={this.state.plan.markers} center={{ lat: 51.5074, lng: -0.1278 }} />}
+
+        {/* updating the state of the google map on the edit page */}
+        {/* updates the route and the markers separately because they are two separate things - the markers are an array */}
+        {this.state.plan.route.routes && <GoogleMap updateRoute={this.updateRoute} updateMarkers={this.updateMarkers} route={this.state.plan.route} markers={this.state.plan.markers} />}
       </div>
     );
   }
 }
 
 export default PlansEdit;
+
+
+// markers={this.state.plan.markers} center={{ lat: 51.5074, lng: -0.1278 }} />}

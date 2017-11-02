@@ -36,12 +36,13 @@
 }
 
 .profile-icon {
-  height: 30px;
-  width: 30px;
+  height: 35px;
+  width: 35px;
   margin: 5px 1px 5px 15px;
 }
 
 .navRight {
+  margin: 10px;
 }
 
 .navLink {
@@ -49,6 +50,10 @@
   color: #003569;
   &.navHome {
     margin-left: 5px;
+  }
+  &:hover {
+    // background-color: darken(#1db954, 10%);
+    color: green;
   }
 }
 

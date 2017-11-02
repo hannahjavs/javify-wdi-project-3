@@ -55,7 +55,8 @@ class GoogleMap extends React.Component {
     };
 
     // SELECTOR FOR IF THE USER PICKS THAT THEY DONT WANT THE SITE TO USE THEIR GEOLOCATION
-    navigator.geolocation.getCurrentPosition(success.bind(this), error.bind(this), options);
+
+    if(this.props.geolocate) navigator.geolocation.getCurrentPosition(success.bind(this), error.bind(this), options);
 
     // This event listener calls addMarker() when the map is CLICKED.
     this.map.addListener('click', (e) => this.addMarker(e.latLng));

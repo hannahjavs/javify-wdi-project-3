@@ -18,16 +18,17 @@ class PlansIndex extends React.Component {
 
   render() {
     // console.log(this.state.plans);
+    // {this.state.plans.map(plan => {
     return (
       <div className="container">
         <div className="row" id="plansindex">
-          <h1>Search For Routes</h1>
+          {/* <h1>Search For Routes</h1> */}
           <div className="page-banner col-md-12">
             {Auth.isAuthenticated() && <Link to="/plans/new" className="main-button">
-              <i className="fa fa-plus" aria-hidden="true"></i>EASY
+              <i className="fa fa-plus" aria-hidden="true"></i>Create a walking or running route
             </Link>}
+            {/* <p>{plan.createdBy.username}</p> */}
           </div>
-
           {/* {this.state.plans && <Carousel images={this.state.plans} />} */}
 
           {this.state.plans.map(plan => {

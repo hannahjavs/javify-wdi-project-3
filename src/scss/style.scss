@@ -1,6 +1,8 @@
 @import "plansindex";
+@import "plansshow";
 @import "userprofile";
 @import "navbar";
+@import "footer";
 
 // html:
 // <div id="sitewide-notice" class="is-active">
@@ -65,23 +67,23 @@ p {
   margin-right: 5px;
 }
 
-button, .main-button, .standard-button {
-  color: white;
-  background-color: #1db954;
-  cursor: pointer;
-  padding: 7px 40px;
-  margin-bottom: 20px;
-  border-radius: 2px;
-  font-size: 18px;
-  outline: none;
-  display: inline-block;
-  border: none;
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: darken(#1db954, 10%);
-  }
-}
+// button, .main-button, .standard-button {
+//   color: white;
+//   background-color: #262626;
+//   cursor: pointer;
+//   padding: 7px 40px;
+//   margin-bottom: 20px;
+//   border-radius: 2px;
+//   font-size: 18px;
+//   outline: none;
+//   display: inline-block;
+//   border: none;
+//   transition: background-color 0.3s;
+//   &:hover {
+//     background-color: darken(#1db954, 10%);
+//     color: white;
+//   }
+// }
 
 .google-map {
   height: 50vh;
