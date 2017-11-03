@@ -91,27 +91,40 @@ function PlansForm({ edit, handleSubmit, handleChange, plan, playlists, getPlayl
           </div>
 
 
+
+
+
           {/* SELECT A PLAYLIST FROM SPOTIFY */}
           {/* NOTE: ADD SOME ERROR MESSAGES IF USED DOES NOT SELECT PLAYLIST */}
           <label htmlFor="playlist">Select the playlist you usually listen to on this route:</label>
-          {playlists && playlists.map(playlist => (
-            <div className="radio" key={playlist.id}>
-              <label>
-                <input type="radio"
-                  className="form-control"
-                  id="playlist"
-                  name="playlist"
-                  value={playlist.id}
-                  checked={playlist.id === plan.playlist}
-                  onChange={handleChange} />
 
-                {playlist.name}
-              </label>
-              {!playlist.tracks.items && <button type="button" onClick={() => getPlaylist(playlist.id)}>Preview Tracks</button>}
-              {playlist.tracks.items && playlist.tracks.items.length}
-              {playlist.tracks.items && playlist.tracks.items.map(item => <audio controls key={item.track.id} src={item.track.preview_url}></audio>)}
+
+          {playlists && playlists.map(playlist => (
+              <div className="row" key={playlist.id}>
+                <div className="radio">
+                {/* <label> */}
+                  <input type="radio"
+                    className="radio-button pFormItem"
+                    id="playlist"
+                    name="playlist"
+                    value={playlist.id}
+                    checked={playlist.id === plan.playlist}
+                    onChange={handleChange} />
+
+                  {/* PLAYLIST NAME */}
+                  <p className="playlist-name pFormItem">{playlist.name}</p>
+                {/* </label> */}
+
+                {!playlist.tracks.items && <button className="preview-tracks-button pFormItem" type="button" onClick={() => getPlaylist(playlist.id)}>Preview Tracks</button>}
+                {playlist.tracks.items && playlist.tracks.items.length}
+                {playlist.tracks.items && playlist.tracks.items.map(item => <audio controls key={item.track.id} src={item.track.preview_url}></audio>)}
+              </div>
             </div>
           ))}
+
+
+
+
 
           <button className="save-button">Save</button>
         </form>

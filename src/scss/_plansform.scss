@@ -1,0 +1,42 @@
+
+.preview-tracks-button {
+  background-color: darken(#1db954, 10%);
+  color: white;
+  background-color: #262626;
+  cursor: pointer;
+  padding: 4px 10px;
+  margin: 0;
+  justify-self: end;
+  // margin-bottom: 20px;
+  // margin-right: 20px;
+  border-radius: 2px;
+  font-size: 15px;
+  outline: none;
+  display: inline-block;
+  border: none;
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: #262626;
+    color: white;
+  }
+}
+
+.radio {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 55%;
+  margin-bottom: 15px;
+}
+
+.radio-button {
+  // margin-top: 20px;
+}
+
+p.playlist-name {
+  margin: 0;
+}
+
+.pFormItem {
+  margin-right: 10px;
+}
