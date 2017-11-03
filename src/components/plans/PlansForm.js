@@ -7,7 +7,7 @@ function PlansForm({ edit, handleSubmit, handleChange, plan, playlists, getPlayl
   return (
     <div className="row">
       <div className="col-lg-6 leftColShow">
-        <BackButton history={history} />
+        {/* <BackButton history={history} /> */}
 
         <form onSubmit={handleSubmit}>
 
@@ -92,27 +92,25 @@ function PlansForm({ edit, handleSubmit, handleChange, plan, playlists, getPlayl
 
 
 
-
-
           {/* SELECT A PLAYLIST FROM SPOTIFY */}
           {/* NOTE: ADD SOME ERROR MESSAGES IF USED DOES NOT SELECT PLAYLIST */}
           <label htmlFor="playlist">Select the playlist you usually listen to on this route:</label>
 
-
+          {/* MAPPING OVER PLAYLISTS FROM SPOTIFY */}
           {playlists && playlists.map(playlist => (
-              <div className="row" key={playlist.id}>
-                <div className="radio">
+            <div className="" key={playlist.id}>
+              <div className="radio">
                 {/* <label> */}
-                  <input type="radio"
-                    className="radio-button pFormItem"
-                    id="playlist"
-                    name="playlist"
-                    value={playlist.id}
-                    checked={playlist.id === plan.playlist}
-                    onChange={handleChange} />
+                <input type="radio"
+                  className="radio-button plan-form-item"
+                  id="playlist"
+                  name="playlist"
+                  value={playlist.id}
+                  checked={playlist.id === plan.playlist}
+                  onChange={handleChange} />
 
-                  {/* PLAYLIST NAME */}
-                  <p className="playlist-name pFormItem">{playlist.name}</p>
+                {/* PLAYLIST NAME */}
+                <p className="playlist-name pFormItem">{playlist.name}</p>
                 {/* </label> */}
 
                 {!playlist.tracks.items && <button className="preview-tracks-button pFormItem" type="button" onClick={() => getPlaylist(playlist.id)}>Preview Tracks</button>}
@@ -124,9 +122,8 @@ function PlansForm({ edit, handleSubmit, handleChange, plan, playlists, getPlayl
 
 
 
-
-
           <button className="save-button">Save</button>
+          <BackButton history={history} />
         </form>
       </div>
 

@@ -5,11 +5,6 @@
 @import "footer";
 @import "plansform";
 
-// html:
-// <div id="sitewide-notice" class="is-active">
-//   Your form has been saved!
-// </div>
-//
 // // FOR THE NAVBAR DROPDOWN NOTIFICATION
 //
 // body {
@@ -34,9 +29,10 @@
 // }
 // // FOR THE NAVBAR DROPDOWN NOTIFICATION ^^^
 
-// .navbar-nav {
-//   color: #262626;
-// }
+.navbar-nav {
+  color: #262626;
+}
+
 
 body, html {
   height: 100%;
