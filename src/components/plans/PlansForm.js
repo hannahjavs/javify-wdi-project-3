@@ -7,8 +7,6 @@ function PlansForm({ edit, handleSubmit, handleChange, plan, playlists, getPlayl
   return (
     <div className="row">
       <div className="col-lg-6 leftColShow">
-        {/* <BackButton history={history} /> */}
-
         <form onSubmit={handleSubmit}>
 
           {/* PLAN TITLE */}
@@ -41,22 +39,6 @@ function PlansForm({ edit, handleSubmit, handleChange, plan, playlists, getPlayl
             {errors.location && <small className="has-error">{errors.location}</small>}
           </div>
 
-          {/* DATE OF PLAN POSTED */}
-          {/* <div className={errors.date ? 'form-group has-error' :
-            'form-group'}>
-            <label htmlFor="date">Date</label>
-            <input
-              type="text"
-              className="form-control"
-              id="date"
-              name="date"
-              value={plan.date}
-              onChange={handleChange}
-            />
-            {errors.date && <small className="has-error">{errors.date}</small>}
-          </div> */}
-
-
           {/* PLAN IMAGE */}
           <div className={errors.image ? 'form-group has-error' : 'form-group'}>
             <label htmlFor="image">Image</label>
@@ -70,7 +52,6 @@ function PlansForm({ edit, handleSubmit, handleChange, plan, playlists, getPlayl
             />
             {errors.image && <small className="has-error">{errors.image}</small>}
           </div>
-
 
           {/* PLAN DIFFICULTY */}
           <div className={errors.difficulty ? 'form-group has-error' : 'form-group'}>
@@ -91,16 +72,14 @@ function PlansForm({ edit, handleSubmit, handleChange, plan, playlists, getPlayl
           </div>
 
 
-
           {/* SELECT A PLAYLIST FROM SPOTIFY */}
           {/* NOTE: ADD SOME ERROR MESSAGES IF USED DOES NOT SELECT PLAYLIST */}
-          <label htmlFor="playlist">Select the playlist you usually listen to on this route:</label>
+          <label htmlFor="playlist">Select the playlist you would listen to on this route:</label>
 
           {/* MAPPING OVER PLAYLISTS FROM SPOTIFY */}
           {playlists && playlists.map(playlist => (
             <div className="" key={playlist.id}>
               <div className="radio">
-                {/* <label> */}
                 <input type="radio"
                   className="radio-button plan-form-item"
                   id="playlist"
@@ -111,14 +90,15 @@ function PlansForm({ edit, handleSubmit, handleChange, plan, playlists, getPlayl
 
                 {/* PLAYLIST NAME */}
                 <p className="playlist-name plan-form-item">{playlist.name}</p>
-                {/* </label> */}
+
 
                 {!playlist.tracks.items && <button className="preview-tracks-button plan-form-item" type="button" onClick={() => getPlaylist(playlist.id)}>Preview Tracks</button>}
+                
                 {playlist.tracks.items && playlist.tracks.items.length}
 
                 <div className="row">
-                {playlist.tracks.items && playlist.tracks.items.map(item => <audio controls key={item.track.id} src={item.track.preview_url}></audio>)}
-              </div>
+                  {playlist.tracks.items && playlist.tracks.items.map(item => <audio controls key={item.track.id} src={item.track.preview_url}></audio>)}
+                </div>
               </div>
             </div>
           ))}

@@ -12,6 +12,7 @@
   display: inline-block;
   border: none;
   transition: background-color 0.3s;
+  // position: absolute;
   &:hover {
     background-color: #262626;
     color: white;
@@ -22,7 +23,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 55%;
+  width: 100%;
   margin-bottom: 15px;
 }
 
@@ -35,5 +36,5 @@ p.playlist-name {
 }
 
 .plan-form-item {
-  margin-right: 10px;
+  margin-right: 10px;  
 }
