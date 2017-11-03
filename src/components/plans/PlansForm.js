@@ -110,17 +110,18 @@ function PlansForm({ edit, handleSubmit, handleChange, plan, playlists, getPlayl
                   onChange={handleChange} />
 
                 {/* PLAYLIST NAME */}
-                <p className="playlist-name pFormItem">{playlist.name}</p>
+                <p className="playlist-name plan-form-item">{playlist.name}</p>
                 {/* </label> */}
 
-                {!playlist.tracks.items && <button className="preview-tracks-button pFormItem" type="button" onClick={() => getPlaylist(playlist.id)}>Preview Tracks</button>}
+                {!playlist.tracks.items && <button className="preview-tracks-button plan-form-item" type="button" onClick={() => getPlaylist(playlist.id)}>Preview Tracks</button>}
                 {playlist.tracks.items && playlist.tracks.items.length}
+
+                <div className="row">
                 {playlist.tracks.items && playlist.tracks.items.map(item => <audio controls key={item.track.id} src={item.track.preview_url}></audio>)}
+              </div>
               </div>
             </div>
           ))}
-
-
 
           <button className="save-button">Save</button>
           <BackButton history={history} />
