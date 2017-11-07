@@ -91,9 +91,8 @@ function PlansForm({ edit, handleSubmit, handleChange, plan, playlists, getPlayl
                 {/* PLAYLIST NAME */}
                 <p className="playlist-name plan-form-item">{playlist.name}</p>
 
-
                 {!playlist.tracks.items && <button className="preview-tracks-button plan-form-item" type="button" onClick={() => getPlaylist(playlist.id)}>Preview Tracks</button>}
-                
+
                 {playlist.tracks.items && playlist.tracks.items.length}
 
                 <div className="row">

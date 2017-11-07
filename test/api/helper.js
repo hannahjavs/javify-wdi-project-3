@@ -6,4 +6,4 @@ global.expect = chai.expect;
 
 const supertest = require('supertest');
 const app = require('../../index');
-global.api = supertest(app);
+global.api = supertest(app); // global is like window
