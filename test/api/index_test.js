@@ -15,7 +15,6 @@ const planData = [{
   markers: {}
 }];
 
-
 describe('GET /api/plans', () => {
 
   beforeEach(done => {
@@ -58,7 +57,7 @@ describe('GET /api/plans', () => {
       });
   });
 
-// closing test tage
+// closing test tag
 });
 
 

@@ -29,7 +29,7 @@ class GoogleMap extends React.Component {
       suppressWalkingLayer: true,
       suppressMarkers: true,
       polylineOptions: {
-        strokeColor: 'green',
+        strokeColor: 'pink',
         strokeOpacity: 1.0
       },
       map: this.map
@@ -54,14 +54,14 @@ class GoogleMap extends React.Component {
       enableHighAccuracy: true
     };
 
-    // SELECTOR FOR IF THE USER PICKS THAT THEY DONT WANT THE SITE TO USE THEIR GEOLOCATION
-
+    // SELECTOR FOR IF THE USER PICKS THAT THEY DONT WANT THE SITE TO USE THEIR GEOLOCATION:
     if(this.props.geolocate) navigator.geolocation.getCurrentPosition(success.bind(this), error.bind(this), options);
 
-    // This event listener calls addMarker() when the map is CLICKED.
+    // This event listener calls addMarker() when the map is CLICKED by the user.
     this.map.addListener('click', (e) => this.addMarker(e.latLng));
   }
 
+  // THERE IS A BUG HERE SORT IT OUT!
   labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; // Marker labels
   labelIndex = 0; // Always starting at the label 'A' index which is 0
 
@@ -73,11 +73,16 @@ class GoogleMap extends React.Component {
     if(this.markers.length < 2) return false; // if there is less than two markers (no markers) then dont run the code to create a line
 
     //Set variable for start point marker - which will be [0] in the array:
-    const startPoint = {lat: this.markers[0].position.lat(), lng: this.markers[0].position.lng()};
+    const startPoint = {
+      lat: this.markers[0].position.lat(),
+      lng: this.markers[0].position.lng()
+    };
     console.log(startPoint);
 
-    //Set variable for endPoint marker - which will be [1] in the array:
-    const endPoint = {lat: this.markers[1].position.lat(), lng: this.markers[1].position.lng()};
+    // Set variable for endPoint marker - which will be [1] in the array:
+    const endPoint = {
+      lat: this.markers[1].position.lat(),
+      lng: this.markers[1].position.lng()};
     console.log(endPoint);
 
     //Turn the remaining markers into waypoints.
@@ -143,10 +148,6 @@ class GoogleMap extends React.Component {
     const markerPositions = this.markers.map(marker => marker.getPosition().toJSON());
     this.props.updateMarkers(markerPositions);
   }
-
-
-
-
 
 
   componentWillUnmount() {

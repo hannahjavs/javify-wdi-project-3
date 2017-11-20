@@ -6,7 +6,10 @@ const planSchema = mongoose.Schema({
   playlist: { type: String },
   difficulty: { type: String, required: 'Level of difficulty is required' },
   image: { type: String, required: 'Image is required' },
+
+  // how do i write this as a test if mongoose is involved?
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User'},
+  // how do i include the route and the markers as a test?
   route: { type: Object },
   markers: { type: Array }
 });
